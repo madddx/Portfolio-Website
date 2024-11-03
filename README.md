@@ -6,16 +6,15 @@
 
 ### Website Preview
 #### Home Page
-<img src="website_images/HomePage.gif" width="900">
-
-
-#### About Page
-<img src="website_images/AboutPage.png" width="900">
+<img src="website_images/home.png" width="900">
 
 
 #### Projects Page
-<img src="website_images/ProjectPage.png" width="900">
-  
+<img src="website_images/project.png" width="900">
+
+
+#### Contact Page
+<img src="website_images/contact.png" width="900">  
 
 
 
