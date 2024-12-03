@@ -18,7 +18,7 @@ body {
 body::before {
   content: "";
   position: fixed;
-  background: #197499;
+  background: #229FD1;
   background-size: cover;
   left: 0;
   right: 0;
