@@ -1,7 +1,13 @@
+/**
+ * Template Name: Personal - v2.1.0
+ * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
+ * Author: BootstrapMade.com
+ * License: https://bootstrapmade.com/license/
+ */
 !(function ($) {
   "use strict";
 
-  // Nav Menu: Smooth scrolling and section toggle
+  // Nav Menu
   $(document).on("click", ".nav-menu a, .mobile-nav a", function (e) {
     if (
       location.pathname.replace(/^\//, "") ==
@@ -13,14 +19,12 @@
       if (target.length) {
         e.preventDefault();
 
-        // Highlight active menu item
         if ($(this).parents(".nav-menu, .mobile-nav").length) {
           $(".nav-menu .active, .mobile-nav .active").removeClass("active");
           $(this).closest("li").addClass("active");
         }
 
-        // Section handling
-        if (hash === "#header") {
+        if (hash == "#header") {
           $("#header").removeClass("header-top");
           $("section").removeClass("section-show");
           return;
@@ -37,7 +41,6 @@
           $(hash).addClass("section-show");
         }
 
-        // Handle mobile nav visibility
         if ($("body").hasClass("mobile-nav-active")) {
           $("body").removeClass("mobile-nav-active");
           $(".mobile-nav-toggle i").toggleClass(
@@ -51,7 +54,7 @@
     }
   });
 
-  // Handle hash links on page load
+  // Activate/show sections on load with hash links
   if (window.location.hash) {
     var initial_nav = window.location.hash;
     if ($(initial_nav).length) {
@@ -67,16 +70,6 @@
       }, 350);
     }
   }
-
-  // Certification section animation (Optional)
-  $("#certifications").waypoint(
-    function () {
-      $(".certification-card").addClass("animated fadeIn");
-    },
-    {
-      offset: "80%",
-    }
-  );
 
   // Mobile Navigation
   if ($(".nav-menu").length) {
@@ -112,4 +105,62 @@
   } else if ($(".mobile-nav, .mobile-nav-toggle").length) {
     $(".mobile-nav, .mobile-nav-toggle").hide();
   }
+
+  // jQuery counterUp
+  $('[data-toggle="counter-up"]').counterUp({
+    delay: 10,
+    time: 1000,
+  });
+
+  // Skills section
+  $(".skills-content").waypoint(
+    function () {
+      $(".progress .progress-bar").each(function () {
+        $(this).css("width", $(this).attr("aria-valuenow") + "%");
+      });
+    },
+    {
+      offset: "80%",
+    }
+  );
+
+  // Testimonials carousel (uses the Owl Carousel library)
+  $(".testimonials-carousel").owlCarousel({
+    autoplay: true,
+    dots: true,
+    loop: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      768: {
+        items: 2,
+      },
+      900: {
+        items: 3,
+      },
+    },
+  });
+
+  // Porfolio isotope and filter
+  $(window).on("load", function () {
+    var portfolioIsotope = $(".portfolio-container").isotope({
+      itemSelector: ".portfolio-item",
+      layoutMode: "fitRows",
+    });
+
+    $("#portfolio-flters li").on("click", function () {
+      $("#portfolio-flters li").removeClass("filter-active");
+      $(this).addClass("filter-active");
+
+      portfolioIsotope.isotope({
+        filter: $(this).data("filter"),
+      });
+    });
+  });
+
+  // Initiate venobox (lightbox feature used in portofilo)
+  $(document).ready(function () {
+    $(".venobox").venobox();
+  });
 })(jQuery);
