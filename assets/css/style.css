@@ -71,7 +71,7 @@ h6 {
   font-size: 48px;
   margin-top: 0px;
   padding: 0;
-  line-height: 1.5;
+  line-height: 1;
   font-weight: 700;
   font-family: "Poppins", sans-serif;
 }
@@ -146,33 +146,27 @@ h6 {
 --------------------------------------------------------------*/
 /* Desktop Navigation */
 .nav-menu {
-  margin-top: 20px; /* Adjust vertical alignment */
-  overflow: hidden; /* Prevent overflow issues */
-  white-space: nowrap; /* Prevent items from wrapping */
+  margin-top: 35px;
 }
 
 .nav-menu ul {
   display: flex;
-  flex-wrap: nowrap; /* Ensure items stay on one line */
-  justify-content: space-between; /* Space items evenly */
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .nav-menu li + li {
-  margin-left: 15px; /* Reduce space between items */
+  margin-left: 30px;
 }
 
 .nav-menu a {
   display: block;
   position: relative;
   color: #fff;
-  font-size: 14px; /* Reduce font size */
+  font-size: 19px;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
-  padding: 5px 10px; /* Reduce padding */
-  text-decoration: none;
 }
 
 .nav-menu a:before {
@@ -184,6 +178,7 @@ h6 {
   left: 0;
   background-color: #9e7f25;
   visibility: hidden;
+  width: 0px;
   transition: all 0.3s ease-in-out 0s;
 }
 
@@ -201,19 +196,6 @@ h6 {
   text-decoration: none;
 }
 
-/* Responsive Adjustments for Smaller Screens */
-@media (max-width: 768px) {
-  .nav-menu ul {
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center the items */
-  }
-
-  .nav-menu a {
-    font-size: 12px; /* Further reduce font size */
-    padding: 10px 5px; /* Adjust padding */
-  }
-}
-
 /* Mobile Navigation */
 .mobile-nav-toggle {
   position: fixed;
@@ -222,7 +204,7 @@ h6 {
   z-index: 9998;
   border: 0;
   background: none;
-  font-size: 20px; /* Reduced font size */
+  font-size: 24px;
   transition: all 0.4s;
   outline: none !important;
   line-height: 1;
@@ -261,7 +243,7 @@ h6 {
   display: block;
   position: relative;
   color: #fff;
-  padding: 8px 16px; /* Adjust padding for smaller font */
+  padding: 10px 20px;
   font-weight: 500;
   outline: none;
 }
@@ -504,41 +486,6 @@ section .container {
   height: 10px;
   transition: 0.9s;
   background-color: #1c7d32;
-}
-
-/*--------------------------------------------------------------
-# Certifications
---------------------------------------------------------------*/
-
-.certification-card {
-  background: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.certification-card h4 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
-}
-
-.certification-card p {
-  font-size: 14px;
-  color: #666;
-  margin: 10px 0;
-}
-
-.certification-card a {
-  font-size: 14px;
-  color: #007bff;
-  text-decoration: none;
-}
-
-.certification-card a:hover {
-  text-decoration: underline;
 }
 
 /*--------------------------------------------------------------
