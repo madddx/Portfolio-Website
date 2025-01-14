@@ -1,13 +1,13 @@
 /**
+ * Main JavaScript for Personal Portfolio
  * Template Name: Personal - v2.1.0
  * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
- * Author: BootstrapMade.com
- * License: https://bootstrapmade.com/license/
  */
+
 !(function ($) {
   "use strict";
 
-  // Nav Menu
+  // Smooth scroll for navigation links
   $(document).on("click", ".nav-menu a, .mobile-nav a", function (e) {
     if (
       location.pathname.replace(/^\//, "") ==
@@ -16,31 +16,34 @@
     ) {
       var hash = this.hash;
       var target = $(hash);
+
       if (target.length) {
         e.preventDefault();
 
+        // Update active class for navigation
         if ($(this).parents(".nav-menu, .mobile-nav").length) {
           $(".nav-menu .active, .mobile-nav .active").removeClass("active");
           $(this).closest("li").addClass("active");
         }
 
-        if (hash == "#header") {
+        // Show target section
+        if (hash === "#header") {
           $("#header").removeClass("header-top");
           $("section").removeClass("section-show");
-          return;
-        }
-
-        if (!$("#header").hasClass("header-top")) {
-          $("#header").addClass("header-top");
-          setTimeout(function () {
+        } else {
+          if (!$("#header").hasClass("header-top")) {
+            $("#header").addClass("header-top");
+            setTimeout(function () {
+              $("section").removeClass("section-show");
+              $(hash).addClass("section-show");
+            }, 350);
+          } else {
             $("section").removeClass("section-show");
             $(hash).addClass("section-show");
-          }, 350);
-        } else {
-          $("section").removeClass("section-show");
-          $(hash).addClass("section-show");
+          }
         }
 
+        // Close mobile nav if open
         if ($("body").hasClass("mobile-nav-active")) {
           $("body").removeClass("mobile-nav-active");
           $(".mobile-nav-toggle i").toggleClass(
@@ -54,35 +57,35 @@
     }
   });
 
-  // Activate/show sections on load with hash links
+  // Activate/show sections based on hash links on load
   if (window.location.hash) {
-    var initial_nav = window.location.hash;
-    if ($(initial_nav).length) {
+    var initialNav = window.location.hash;
+    if ($(initialNav).length) {
       $("#header").addClass("header-top");
       $(".nav-menu .active, .mobile-nav .active").removeClass("active");
       $(".nav-menu, .mobile-nav")
-        .find('a[href="' + initial_nav + '"]')
+        .find('a[href="' + initialNav + '"]')
         .parent("li")
         .addClass("active");
       setTimeout(function () {
         $("section").removeClass("section-show");
-        $(initial_nav).addClass("section-show");
+        $(initialNav).addClass("section-show");
       }, 350);
     }
   }
 
   // Mobile Navigation
   if ($(".nav-menu").length) {
-    var $mobile_nav = $(".nav-menu").clone().prop({
+    var $mobileNav = $(".nav-menu").clone().prop({
       class: "mobile-nav d-lg-none",
     });
-    $("body").append($mobile_nav);
+    $("body").append($mobileNav);
     $("body").prepend(
       '<button type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>'
     );
     $("body").append('<div class="mobile-nav-overly"></div>');
 
-    $(document).on("click", ".mobile-nav-toggle", function (e) {
+    $(document).on("click", ".mobile-nav-toggle", function () {
       $("body").toggleClass("mobile-nav-active");
       $(".mobile-nav-toggle i").toggleClass(
         "icofont-navigation-menu icofont-close"
@@ -106,13 +109,13 @@
     $(".mobile-nav, .mobile-nav-toggle").hide();
   }
 
-  // jQuery counterUp
+  // jQuery counterUp (for statistics)
   $('[data-toggle="counter-up"]').counterUp({
     delay: 10,
     time: 1000,
   });
 
-  // Skills section
+  // Skills section progress bars
   $(".skills-content").waypoint(
     function () {
       $(".progress .progress-bar").each(function () {
@@ -124,7 +127,7 @@
     }
   );
 
-  // Testimonials carousel (uses the Owl Carousel library)
+  // Testimonials carousel (uses Owl Carousel library)
   $(".testimonials-carousel").owlCarousel({
     autoplay: true,
     dots: true,
@@ -142,7 +145,7 @@
     },
   });
 
-  // Porfolio isotope and filter
+  // Portfolio filter and isotope
   $(window).on("load", function () {
     var portfolioIsotope = $(".portfolio-container").isotope({
       itemSelector: ".portfolio-item",
@@ -159,8 +162,10 @@
     });
   });
 
-  // Initiate venobox (lightbox feature used in portofilo)
+  // Initialize Venobox (lightbox for portfolio details)
   $(document).ready(function () {
-    $(".venobox").venobox();
+    $(".venobox").venobox({
+      spinner: "wave",
+    });
   });
 })(jQuery);
