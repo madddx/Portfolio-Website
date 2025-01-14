@@ -32,10 +32,12 @@ https://madhesh.vercel.app/
 - Use Vercel to import and deploy the repo
 
 ## Sections 📚
+✔️ Home\
 ✔️ About\
 ✔️ Interests\
 ✔️ Education\
-✔️ Online Certification\
+✔️ Online Works\
+✔️ Certifications\
 ✔️ Experience\
 ✔️ Projects \
 ✔️ Skills \
