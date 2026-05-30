@@ -844,7 +844,7 @@ h2 em {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1.25rem;
-  display: flex;
+  display: block;
   align-items: center;
   gap: 1rem;
   text-decoration: none;
@@ -1417,3 +1417,4 @@ footer {
   .hero-stats { gap: 1.5rem; }
   .footer-inner { flex-direction: column; text-align: center; }
 }
+
