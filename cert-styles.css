@@ -449,3 +449,202 @@
   .cert-meta-row { gap: 1.25rem; }
   .cert-btns { flex-direction: column; }
 }
+
+/* =========================================
+   CERT PAGE MOBILE FIXES
+========================================= */
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Prevent overflow globally */
+* {
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Images responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Long text/link fixes */
+a,
+.detail-value,
+.cert-id-value,
+.meta-value,
+.cert-subtitle,
+.domain-card p,
+.about-text p {
+  word-break: break-word;
+}
+
+/* Verification URL fix */
+.detail-value a {
+  display: inline-block;
+  max-width: 100%;
+  word-break: break-all;
+  line-height: 1.6;
+}
+
+/* Prevent cards from exceeding width */
+.cert-card,
+.verify-box,
+.domain-card,
+.skill-category {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* =========================
+   TABLET + MOBILE
+========================= */
+@media (max-width: 900px) {
+
+  .cert-hero {
+    padding: 90px 20px 60px;
+  }
+
+  .cert-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .cert-card {
+    width: 100%;
+  }
+
+  .about-cols {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .domains-grid,
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .verify-details {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-btns {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cert-meta-row {
+    gap: 1.2rem;
+  }
+}
+
+/* =========================
+   MOBILE DEVICES
+========================= */
+@media (max-width: 600px) {
+
+  .cert-title {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  .cert-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .cert-card {
+    padding: 1.3rem;
+    border-radius: 18px;
+  }
+
+  .verify-box {
+    padding: 1.4rem;
+  }
+
+  .domain-card {
+    padding: 1.3rem;
+  }
+
+  .cert-meta-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .validity-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .validity-arrow {
+    display: none;
+  }
+
+  .cert-id {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .copy-btn {
+    margin-left: 0;
+  }
+
+  .cert-tags,
+  .skill-items {
+    gap: 0.45rem;
+  }
+
+  .tag,
+  .skill-chip {
+    font-size: 0.72rem;
+  }
+
+  .nav-back {
+    font-size: 0.65rem;
+    padding: 0.45rem 0.75rem;
+  }
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+@media (max-width: 420px) {
+
+  .cert-title {
+    font-size: 1.7rem;
+  }
+
+  .cert-subtitle,
+  .about-text p,
+  .domain-card p,
+  .verify-box p {
+    font-size: 0.88rem;
+  }
+
+  .meta-value,
+  .detail-value,
+  .validity-date {
+    font-size: 0.85rem;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    font-size: 0.68rem;
+    padding: 0.8rem 1rem;
+  }
+}
