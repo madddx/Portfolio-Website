@@ -1480,3 +1480,16 @@ footer {
     height: 80px;
   }
 }
+
+/* ── NAVBAR MOBILE FIX ── */
+@media (max-width: 1100px) {
+  .nav-links {
+    display: none;
+  }
+  .nav-cta {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
