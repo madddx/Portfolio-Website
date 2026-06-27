@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Admin — Madhesh H</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #0b0d11; --surface: #13161c; --surface2: #1a1e27; --border: #252933;
+      --accent: #7c6fff; --accent2: #4af0c4; --text: #e8eaf0; --text2: #8b90a0;
+      --danger: #ff5c6a; --success: #4af0c4; --warning: #ffb443; --radius: 10px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    .shell { display: flex; min-height: 100vh; }
+    .sidebar { width: 240px; flex-shrink: 0; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+    .sidebar-logo { padding: 22px 20px 14px; font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--accent); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .sidebar-logo span { font-size: .68rem; color: var(--text2); font-weight: 400; font-family: 'DM Mono', monospace; }
+    .sidebar-nav { flex: 1; padding: 10px 0; }
+    .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 20px; cursor: pointer; color: var(--text2); font-size: .85rem; transition: all .15s; border-left: 3px solid transparent; }
+    .nav-item:hover { color: var(--text); background: var(--surface2); }
+    .nav-item.active { color: var(--accent); border-left-color: var(--accent); background: rgba(124,111,255,.08); }
+    .nav-item i { width: 18px; text-align: center; }
+    .sidebar-footer { padding: 14px 20px; border-top: 1px solid var(--border); font-size: .72rem; color: var(--text2); font-family: 'DM Mono', monospace; }
+    .main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+    .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 13px 28px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .topbar-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: .95rem; }
+    .topbar-actions { display: flex; gap: 10px; align-items: center; }
+    .btn { padding: 8px 16px; border-radius: 8px; font-size: .8rem; font-weight: 500; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; transition: all .15s; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #9386ff; }
+    .btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border); }
+    .btn-ghost:hover { color: var(--text); border-color: var(--text2); }
+    .btn-danger { background: transparent; color: var(--danger); border: 1px solid var(--danger); }
+    .btn-danger:hover { background: var(--danger); color: #fff; }
+    .btn-sm { padding: 5px 12px; font-size: .75rem; }
+    .btn-icon { padding: 7px 10px; }
+    #toast { position: fixed; bottom: 24px; right: 24px; z-index: 9999; padding: 12px 18px; border-radius: 8px; font-size: .83rem; font-weight: 500; display: none; align-items: center; gap: 8px; max-width: 340px; }
+    #toast.show { display: flex; }
+    #toast.success { background: #0d2e27; color: var(--success); border: 1px solid #1a5a4a; }
+    #toast.error { background: #2e0d12; color: var(--danger); border: 1px solid #5a1a22; }
+    .content { padding: 28px; flex: 1; }
+    .section-panel { display: none; }
+    .section-panel.active { display: block; }
+    .panel-header { margin-bottom: 24px; }
+    .panel-header h2 { font-family: 'Syne', sans-serif; font-size: 1.35rem; font-weight: 700; }
+    .panel-header p { color: var(--text2); font-size: .875rem; margin-top: 4px; }
+    .sub-header { font-family: 'Syne', sans-serif; font-size: .95rem; font-weight: 700; margin-bottom: 14px; color: var(--text); }
+    .form-grid { display: grid; gap: 18px; }
+    .g2 { grid-template-columns: 1fr 1fr; }
+    .g3 { grid-template-columns: 1fr 1fr 1fr; }
+    @media(max-width:900px){.g2,.g3{grid-template-columns:1fr;}}
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: .76rem; font-weight: 500; color: var(--text2); text-transform: uppercase; letter-spacing: .06em; }
+    .field input, .field textarea, .field select { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 9px 13px; border-radius: 8px; font-size: .875rem; font-family: 'DM Sans', sans-serif; transition: border-color .15s; width: 100%; }
+    .field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(124,111,255,.12); }
+    .field textarea { resize: vertical; min-height: 80px; }
+    .field-hint { font-size: .72rem; color: var(--text2); margin-top: 2px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; margin-bottom: 14px; }
+    .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; gap: 10px; }
+    .card-title { font-family: 'Syne', sans-serif; font-size: .9rem; font-weight: 700; }
+    .card-num { width: 24px; height: 24px; border-radius: 6px; background: rgba(124,111,255,.15); color: var(--accent); font-size: .72rem; font-weight: 700; font-family: 'DM Mono', monospace; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .add-btn { width: 100%; border: 2px dashed var(--border); border-radius: var(--radius); padding: 14px; text-align: center; cursor: pointer; color: var(--text2); font-size: .85rem; font-family: 'DM Sans', sans-serif; background: transparent; transition: all .15s; margin-top: 4px; }
+    .add-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(124,111,255,.05); }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 22px 0; }
+    .save-bar { position: sticky; bottom: 0; background: var(--bg); border-top: 1px solid var(--border); padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; }
+    .save-bar p { font-size: .78rem; color: var(--text2); }
+    .badge-row { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 10px; }
+    .bp { padding: 3px 10px; border-radius: 20px; font-size: .72rem; font-weight: 500; background: rgba(74,240,196,.12); color: var(--accent2); border: 1px solid rgba(74,240,196,.25); }
+    .bullet-item { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 7px; }
+    .bullet-item textarea { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 7px 11px; border-radius: 8px; font-size: .83rem; font-family: 'DM Sans', sans-serif; flex: 1; resize: none; min-height: 56px; transition: border-color .15s; }
+    .bullet-item textarea:focus { outline: none; border-color: var(--accent); }
+    .bdel { background: none; border: none; color: var(--text2); cursor: pointer; padding: 7px; font-size: .83rem; flex-shrink: 0; }
+    .bdel:hover { color: var(--danger); }
+    .skill-row { display: flex; gap: 8px; align-items: center; margin-bottom: 7px; }
+    .skill-row input { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 7px 11px; border-radius: 8px; font-size: .83rem; font-family: 'DM Sans', sans-serif; flex: 1; transition: border-color .15s; }
+    .skill-row input:focus { outline: none; border-color: var(--accent); }
+    .import-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 14px; font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--text2); white-space: pre-wrap; word-break: break-all; max-height: 280px; overflow-y: auto; }
+  </style>
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <i class="fas fa-sliders-h"></i>
+      <div>Admin<br><span>portfolio-data.json</span></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-item active" onclick="show('hero')"><i class="fas fa-home"></i> Hero</div>
+      <div class="nav-item" onclick="show('about')"><i class="fas fa-user"></i> About</div>
+      <div class="nav-item" onclick="show('research')"><i class="fas fa-flask"></i> Research</div>
+      <div class="nav-item" onclick="show('experience')"><i class="fas fa-briefcase"></i> Experience</div>
+      <div class="nav-item" onclick="show('projects')"><i class="fas fa-code"></i> Projects</div>
+      <div class="nav-item" onclick="show('certifications')"><i class="fas fa-certificate"></i> Certifications</div>
+      <div class="nav-item" onclick="show('awards')"><i class="fas fa-trophy"></i> Awards</div>
+      <div class="nav-item" onclick="show('skills')"><i class="fas fa-layer-group"></i> Skills</div>
+      <div class="nav-item" onclick="show('education')"><i class="fas fa-graduation-cap"></i> Education</div>
+      <div class="nav-item" onclick="show('online')"><i class="fas fa-laptop"></i> Online Works</div>
+      <div class="nav-item" onclick="show('links')"><i class="fas fa-link"></i> Links</div>
+      <div class="nav-item" onclick="show('contact')"><i class="fas fa-envelope"></i> Contact</div>
+      <div class="nav-item" onclick="show('site')"><i class="fas fa-cog"></i> Site Settings</div>
+      <hr style="border:none;border-top:1px solid var(--border);margin:10px 0">
+      <div class="nav-item" onclick="show('exportimport')"><i class="fas fa-database"></i> Export / Import</div>
+    </nav>
+    <div class="sidebar-footer">v2.0 · MH Portfolio Admin</div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <span class="topbar-title" id="topbarTitle">Hero</span>
+      <div class="topbar-actions">
+        <button class="btn btn-ghost btn-sm" onclick="window.open('index.html','_blank')"><i class="fas fa-eye"></i> Preview Site</button>
+        <button class="btn btn-primary btn-sm" onclick="saveAll()"><i class="fas fa-download"></i> Save & Download JSON</button>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ═══ HERO ═══ -->
+      <div class="section-panel active" id="panel-hero">
+        <div class="panel-header"><h2>Hero Section</h2><p>Your name, headline, stats, and social links.</p></div>
+        <div class="form-grid">
+          <div class="form-grid g2">
+            <div class="field"><label>Full Name</label><input id="h-name" /></div>
+            <div class="field"><label>Location Label</label><input id="h-label" placeholder="Based in Chennai, India" /></div>
+          </div>
+          <div class="field"><label>Short Bio / Description</label><textarea id="h-desc" rows="3"></textarea></div>
+          <div class="form-grid g2">
+            <div class="field"><label>Profile Photo Path or URL</label><input id="h-photo" placeholder="assets/img/profile.jpg" /><span class="field-hint">Relative path from the project folder, or a full https:// URL</span></div>
+            <div class="field"><label>Card Sub-Role Text</label><input id="h-cardrole" placeholder="Developer · Researcher" /></div>
+          </div>
+          <div class="field"><label>Resume Link (Google Drive)</label><input id="h-resume" /></div>
+
+          <hr class="divider">
+          <div class="sub-header">Typed Phrases</div>
+          <div id="phrases-list"></div>
+          <button class="add-btn" onclick="addPhrase()"><i class="fas fa-plus"></i> Add phrase</button>
+
+          <hr class="divider">
+          <div class="sub-header">Stats (the four numbers)</div>
+          <div id="stats-list"></div>
+
+          <hr class="divider">
+          <div class="sub-header">Hero Card Badges</div>
+          <div class="field"><label>Badges (comma-separated)</label><input id="h-badges" oninput="previewBadges()" /></div>
+          <div class="badge-row" id="badges-preview"></div>
+
+          <hr class="divider">
+          <div class="sub-header">Social Links</div>
+          <div class="form-grid g2">
+            <div class="field"><label><i class="fab fa-linkedin" style="color:#0a66c2"></i> LinkedIn URL</label><input id="s-linkedin" /></div>
+            <div class="field"><label><i class="fab fa-github"></i> GitHub URL</label><input id="s-github" /></div>
+            <div class="field"><label><i class="fas fa-envelope" style="color:#ea4335"></i> Email</label><input id="s-email" /></div>
+            <div class="field"><label><i class="fas fa-graduation-cap" style="color:#4285f4"></i> Google Scholar URL</label><input id="s-scholar" /></div>
+            <div class="field"><label><i class="fas fa-id-card" style="color:#a6ce39"></i> ORCID URL</label><input id="s-orcid" /></div>
+            <div class="field"><label><i class="fas fa-satellite" style="color:#00629b"></i> IEEE Profile URL</label><input id="s-ieee" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ ABOUT ═══ -->
+      <div class="section-panel" id="panel-about">
+        <div class="panel-header"><h2>About Section</h2><p>Bio and personal details.</p></div>
+        <div class="form-grid">
+          <div class="field"><label>First Paragraph</label><textarea id="a-bio1" rows="4"></textarea></div>
+          <div class="field"><label>Second Paragraph</label><textarea id="a-bio2" rows="4"></textarea></div>
+          <hr class="divider">
+          <div class="sub-header">Personal Details</div>
+          <div class="form-grid g2">
+            <div class="field"><label>Birthday</label><input id="a-bday" /></div>
+            <div class="field"><label>Location</label><input id="a-loc" /></div>
+            <div class="field"><label>Email</label><input id="a-email" /></div>
+            <div class="field"><label>Phone</label><input id="a-phone" /></div>
+            <div class="field"><label>ORCID ID</label><input id="a-orcid" /></div>
+            <div class="field"><label>ResearchGate URL</label><input id="a-rg" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ RESEARCH ═══ -->
+      <div class="section-panel" id="panel-research">
+        <div class="panel-header"><h2>Research / Publications</h2><p>IEEE papers and other publications.</p></div>
+        <div id="research-list"></div>
+        <button class="add-btn" onclick="addResearch()"><i class="fas fa-plus"></i> Add paper</button>
+      </div>
+
+      <!-- ═══ EXPERIENCE ═══ -->
+      <div class="section-panel" id="panel-experience">
+        <div class="panel-header"><h2>Experience / Leadership</h2><p>Roles, positions and work history.</p></div>
+        <div id="experience-list"></div>
+        <button class="add-btn" onclick="addExperience()"><i class="fas fa-plus"></i> Add role</button>
+      </div>
+
+      <!-- ═══ PROJECTS ═══ -->
+      <div class="section-panel" id="panel-projects">
+        <div class="panel-header"><h2>Projects</h2><p>Featured work shown on your site.</p></div>
+        <div id="projects-list"></div>
+        <button class="add-btn" onclick="addProject()"><i class="fas fa-plus"></i> Add project</button>
+      </div>
+
+      <!-- ═══ CERTIFICATIONS ═══ -->
+      <div class="section-panel" id="panel-certifications">
+        <div class="panel-header"><h2>Certifications</h2><p>Professional credentials and badges.</p></div>
+        <div id="cert-list"></div>
+        <button class="add-btn" onclick="addCert()"><i class="fas fa-plus"></i> Add certification</button>
+      </div>
+
+      <!-- ═══ AWARDS ═══ -->
+      <div class="section-panel" id="panel-awards">
+        <div class="panel-header"><h2>Awards & Achievements</h2><p>Competition wins and recognition.</p></div>
+        <div id="awards-list"></div>
+        <button class="add-btn" onclick="addAward()"><i class="fas fa-plus"></i> Add award</button>
+      </div>
+
+      <!-- ═══ SKILLS ═══ -->
+      <div class="section-panel" id="panel-skills">
+        <div class="panel-header"><h2>Skills & Tools</h2><p>Tech stack by category.</p></div>
+        <div id="skills-list"></div>
+        <button class="add-btn" onclick="addSkillCat()"><i class="fas fa-plus"></i> Add category</button>
+      </div>
+
+      <!-- ═══ EDUCATION ═══ -->
+      <div class="section-panel" id="panel-education">
+        <div class="panel-header"><h2>Education</h2><p>Academic background.</p></div>
+        <div class="form-grid">
+          <div class="form-grid g2">
+            <div class="field"><label>Institution Name</label><input id="e-name" /></div>
+            <div class="field"><label>Institution Website</label><input id="e-link" /></div>
+          </div>
+          <div class="form-grid g2">
+            <div class="field"><label>Degree</label><input id="e-degree" /></div>
+            <div class="field"><label>Period</label><input id="e-period" placeholder="August 2023 — Present" /></div>
+          </div>
+          <div class="form-grid g2">
+            <div class="field"><label>Logo Image Path</label><input id="e-logo" placeholder="assets/img/education/srm.png" /></div>
+          </div>
+          <div class="field"><label>Courses (comma-separated)</label><input id="e-courses" /></div>
+        </div>
+      </div>
+
+      <!-- ═══ ONLINE WORKS ═══ -->
+      <div class="section-panel" id="panel-online">
+        <div class="panel-header"><h2>Online Works</h2><p>Courses, badges and learning profiles.</p></div>
+        <div id="online-list"></div>
+        <button class="add-btn" onclick="addOnline()"><i class="fas fa-plus"></i> Add entry</button>
+      </div>
+
+      <!-- ═══ LINKS ═══ -->
+      <div class="section-panel" id="panel-links">
+        <div class="panel-header"><h2>Important Links</h2><p>Social profiles and external platforms.</p></div>
+        <div id="links-list"></div>
+        <button class="add-btn" onclick="addLink()"><i class="fas fa-plus"></i> Add link</button>
+      </div>
+
+      <!-- ═══ CONTACT ═══ -->
+      <div class="section-panel" id="panel-contact">
+        <div class="panel-header"><h2>Contact Section</h2><p>Info shown alongside the contact form.</p></div>
+        <div class="form-grid">
+          <div class="field"><label>Intro Text</label><textarea id="c-intro" rows="3"></textarea></div>
+          <div class="form-grid g2">
+            <div class="field"><label>Location</label><input id="c-loc" /></div>
+            <div class="field"><label>Primary Email</label><input id="c-email" /></div>
+            <div class="field"><label>Alt Email</label><input id="c-alt" /></div>
+            <div class="field"><label>Phone</label><input id="c-phone" /></div>
+            <div class="field"><label>LinkedIn URL</label><input id="c-li" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SITE SETTINGS ═══ -->
+      <div class="section-panel" id="panel-site">
+        <div class="panel-header"><h2>Site Settings</h2><p>Global settings: navbar branding, footer, copyright.</p></div>
+        <div class="form-grid">
+          <div class="form-grid g2">
+            <div class="field">
+              <label>Nav Logo Initials</label>
+              <input id="m-initials" placeholder="MH" maxlength="3" />
+              <span class="field-hint">2–3 characters shown as the logo in the navbar and footer (e.g. MH)</span>
+            </div>
+            <div class="field">
+              <label>Copyright Year</label>
+              <input id="m-year" placeholder="2025" />
+              <span class="field-hint">Shown in footer as © 2025 Your Name</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>IEEE Author Profile URL</label>
+            <input id="m-ieee" placeholder="https://ieeexplore.ieee.org/author/..." />
+            <span class="field-hint">Linked from the "View IEEE Author Profile" button in the Research section</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ EXPORT / IMPORT ═══ -->
+      <div class="section-panel" id="panel-exportimport">
+        <div class="panel-header"><h2>Export / Import</h2><p>Backup or restore your portfolio data.</p></div>
+        <div class="form-grid">
+          <div>
+            <p style="font-size:.875rem;color:var(--text2);margin-bottom:12px"><strong style="color:var(--text)">Export</strong> — Save or copy the current data.</p>
+            <button class="btn btn-ghost" onclick="copyJSON()"><i class="fas fa-copy"></i> Copy JSON</button>
+            <button class="btn btn-ghost" style="margin-left:8px" onclick="saveAll()"><i class="fas fa-download"></i> Download JSON</button>
+          </div>
+          <hr class="divider">
+          <div>
+            <p style="font-size:.875rem;color:var(--text2);margin-bottom:10px"><strong style="color:var(--text)">Import</strong> — Paste a JSON file to restore data.</p>
+            <textarea class="import-box" id="import-box" rows="10" placeholder="Paste portfolio-data.json content here..."></textarea>
+            <button class="btn btn-primary" style="margin-top:10px" onclick="importJSON()"><i class="fas fa-upload"></i> Load from JSON</button>
+          </div>
+          <hr class="divider">
+          <div>
+            <p style="font-size:.875rem;color:var(--text2);margin-bottom:10px"><strong style="color:var(--text)">Current Data Preview</strong></p>
+            <pre class="import-box" id="data-preview" style="font-size:.68rem"></pre>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+
+    <div class="save-bar">
+      <p>Edit → click <strong style="color:var(--accent)">Save & Download JSON</strong> → replace <code style="font-family:'DM Mono',monospace;color:var(--accent)">portfolio-data.json</code> in your project folder → site updates automatically.</p>
+      <button class="btn btn-primary" onclick="saveAll()"><i class="fas fa-download"></i> Save & Download JSON</button>
+    </div>
+  </div>
+</div>
+<div id="toast"></div>
+
+<script>
+let D = {};
+
+// ─── LOAD ───
+async function loadData() {
+  try {
+    const r = await fetch('portfolio-data.json?t='+Date.now());
+    D = await r.json();
+    populate();
+    toast('Data loaded', 'success');
+  } catch(e) { toast('Could not load portfolio-data.json', 'error'); }
+}
+
+// ─── POPULATE ALL FIELDS ───
+function populate() {
+  const h = D.hero || {}, s = h.socials || {}, m = D.meta || {}, a = D.about || {}, ad = a.details || {}, e = D.education || {}, c = D.contact || {};
+  sv('h-name', h.name); sv('h-label', h.label); sv('h-desc', h.description);
+  sv('h-photo', h.profilePhoto||'assets/img/profile.jpg'); sv('h-cardrole', h.cardRole||'Developer · Researcher');
+  sv('h-resume', h.resumeLink); sv('h-badges', (h.badges||[]).join(', '));
+  sv('s-linkedin', s.linkedin); sv('s-github', s.github); sv('s-email', s.email);
+  sv('s-scholar', s.scholar); sv('s-orcid', s.orcid); sv('s-ieee', s.ieeeProfile||'');
+  previewBadges();
+  renderPhrases(h.typedPhrases||[]);
+  renderStats(h.stats||[]);
+  sv('a-bio1', a.bio1); sv('a-bio2', a.bio2);
+  sv('a-bday', ad.birthday); sv('a-loc', ad.location); sv('a-email', ad.email);
+  sv('a-phone', ad.phone); sv('a-orcid', ad.orcid); sv('a-rg', ad.researchgate);
+  renderList('research-list', D.research||[], makeResearch);
+  renderList('experience-list', D.experience||[], makeExp);
+  renderList('projects-list', D.projects||[], makeProject);
+  renderList('cert-list', D.certifications||[], makeCert);
+  renderList('awards-list', D.awards||[], makeAward);
+  renderList('skills-list', D.skills||[], makeSkillCat);
+  sv('e-name', e.institution); sv('e-link', e.institutionLink); sv('e-degree', e.degree);
+  sv('e-period', e.period); sv('e-logo', e.logoImg||'assets/img/education/srm.png');
+  sv('e-courses', (e.courses||[]).join(', '));
+  renderList('online-list', D.onlineWorks||[], makeOnline);
+  renderList('links-list', D.links||[], makeLink);
+  sv('c-intro', c.intro); sv('c-loc', c.location); sv('c-email', c.email);
+  sv('c-alt', c.altEmail); sv('c-phone', c.phone); sv('c-li', c.linkedin);
+  sv('m-initials', m.navInitials||'MH'); sv('m-year', m.copyrightYear||'2025');
+  sv('m-ieee', m.ieeeProfileUrl||'');
+  updatePreview();
+}
+
+function renderList(id, arr, maker) {
+  const el = document.getElementById(id); el.innerHTML = '';
+  arr.forEach((item,i) => el.appendChild(maker(item,i)));
+}
+
+// ─── PHRASES ───
+function renderPhrases(arr) {
+  const el = document.getElementById('phrases-list'); el.innerHTML = '';
+  arr.forEach((p,i) => {
+    const d=document.createElement('div');
+    d.style.cssText='display:flex;gap:8px;align-items:center;margin-bottom:8px';
+    d.innerHTML=`<div class="card-num">${i+1}</div><input style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:.875rem;font-family:'DM Sans',sans-serif" class="phrase-in" value="${q(p)}"/><button class="btn btn-danger btn-icon" onclick="this.closest('div').remove()"><i class="fas fa-trash"></i></button>`;
+    el.appendChild(d);
+  });
+}
+function addPhrase(){const el=document.getElementById('phrases-list');const n=el.querySelectorAll('.phrase-in').length+1;const d=document.createElement('div');d.style.cssText='display:flex;gap:8px;align-items:center;margin-bottom:8px';d.innerHTML=`<div class="card-num">${n}</div><input style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:.875rem;font-family:'DM Sans',sans-serif" class="phrase-in" placeholder="e.g. Machine Learning Engineer"/><button class="btn btn-danger btn-icon" onclick="this.closest('div').remove()"><i class="fas fa-trash"></i></button>`;el.appendChild(d);d.querySelector('input').focus();}
+
+// ─── STATS ───
+function renderStats(arr) {
+  const el=document.getElementById('stats-list'); el.innerHTML='';
+  const g=document.createElement('div'); g.style.cssText='display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px';
+  arr.forEach((s,i)=>{const c=document.createElement('div');c.className='card';c.innerHTML=`<div style="font-size:.72rem;color:var(--text2);margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Stat ${i+1}</div><div style="display:flex;gap:8px"><div class="field" style="flex:1"><label>Number</label><input data-s="num" value="${q(s.num||'')}" style="text-align:center;font-weight:700"/></div><div class="field" style="width:58px"><label>Suffix</label><input data-s="sfx" value="${q(s.suffix||'')}"/></div></div><div class="field" style="margin-top:8px"><label>Label</label><input data-s="lbl" value="${q(s.label||'')}"/></div>`;g.appendChild(c);});
+  el.appendChild(g);
+}
+
+// ─── BADGES PREVIEW ───
+function previewBadges(){const tags=(document.getElementById('h-badges')?.value||'').split(',').map(s=>s.trim()).filter(Boolean);document.getElementById('badges-preview').innerHTML=tags.map(t=>`<span class="bp">${q(t)}</span>`).join('');}
+
+// ─── RESEARCH ───
+function makeResearch(r,i){const c=document.createElement('div');c.className='card item';c.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><div class="card-num">${i+1}</div><span class="card-title">${q(r.title||'New Paper')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Year</label><input data-f="year" value="${q(r.year||'2024')}"/></div><div class="field"><label>IEEE Link</label><input data-f="link" value="${q(r.link||'')}"/></div></div><div class="field" style="margin-top:12px"><label>Paper Title</label><input data-f="title" value="${q(r.title||'')}"/></div>`;return c;}
+function addResearch(){const el=document.getElementById('research-list');el.appendChild(makeResearch({},el.querySelectorAll('.item').length));}
+
+// ─── EXPERIENCE ───
+function makeExp(e,i){const c=document.createElement('div');c.className='card item';const bh=(e.bullets||['']).map(b=>`<div class="bullet-item"><textarea data-b rows="2">${q(b)}</textarea><button class="bdel" onclick="this.closest('.bullet-item').remove()"><i class="fas fa-minus-circle"></i></button></div>`).join('');c.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><div class="card-num">${i+1}</div><span class="card-title">${q(e.org||'New Role')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Organization</label><input data-f="org" value="${q(e.org||'')}"/></div><div class="field"><label>Org Website</label><input data-f="orgLink" value="${q(e.orgLink||'')}"/></div><div class="field"><label>Role / Title</label><input data-f="role" value="${q(e.role||'')}"/></div><div class="field"><label>Period</label><input data-f="period" value="${q(e.period||'')}"/></div><div class="field"><label>Icon Class</label><input data-f="icon" value="${q(e.icon||'fas fa-briefcase')}"/><span class="field-hint">FontAwesome e.g. fab fa-google</span></div></div><div style="margin-top:12px"><label style="font-size:.76rem;font-weight:500;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:8px">Bullet Points</label><div class="bc">${bh}</div><button class="add-btn" style="margin-top:4px" onclick="addBullet(this)"><i class="fas fa-plus"></i> Add bullet</button></div>`;return c;}
+function addExperience(){const el=document.getElementById('experience-list');el.appendChild(makeExp({bullets:['']},el.querySelectorAll('.item').length));}
+function addBullet(btn){const bc=btn.previousElementSibling;const d=document.createElement('div');d.className='bullet-item';d.innerHTML=`<textarea data-b rows="2"></textarea><button class="bdel" onclick="this.closest('.bullet-item').remove()"><i class="fas fa-minus-circle"></i></button>`;bc.appendChild(d);d.querySelector('textarea').focus();}
+
+// ─── PROJECTS ───
+function makeProject(p,i){const c=document.createElement('div');c.className='card item';c.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><div class="card-num">${i+1}</div><span class="card-title">${q(p.title||'New Project')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Title</label><input data-f="title" value="${q(p.title||'')}"/></div><div class="field"><label>Image Path</label><input data-f="img" value="${q(p.img||'')}" placeholder="assets/img/project/..."/></div><div class="field"><label>Tags (comma-separated)</label><input data-f="tags" value="${q((p.tags||[]).join(', '))}"/></div><div class="field"><label>GitHub / Details Link</label><input data-f="link" value="${q(p.link||'')}"/></div></div><div class="field" style="margin-top:12px"><label>Description</label><textarea data-f="desc" rows="3">${q(p.desc||'')}</textarea></div>`;return c;}
+function addProject(){const el=document.getElementById('projects-list');el.appendChild(makeProject({},el.querySelectorAll('.item').length));}
+
+// ─── CERTIFICATIONS ───
+function makeCert(c,i){const d=document.createElement('div');d.className='card item';d.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><div class="card-num">${i+1}</div><span class="card-title">${q(c.name||'New Cert')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Certificate Name</label><input data-f="name" value="${q(c.name||'')}"/></div><div class="field"><label>Issuer</label><input data-f="issuer" value="${q(c.issuer||'')}"/></div><div class="field"><label>Badge Image Path</label><input data-f="img" value="${q(c.img||'')}" placeholder="assets/img/certification/..."/></div><div class="field"><label>Link / Page</label><input data-f="link" value="${q(c.link||'')}"/></div></div>`;return d;}
+function addCert(){const el=document.getElementById('cert-list');el.appendChild(makeCert({},el.querySelectorAll('.item').length));}
+
+// ─── AWARDS ───
+function makeAward(a,i){const d=document.createElement('div');d.className='card item';d.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><div class="card-num">${i+1}</div><span class="card-title">${q(a.title||'New Award')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g3"><div class="field"><label>Emoji / Icon</label><input data-f="icon" value="${q(a.icon||'🏆')}" style="font-size:1.1rem"/></div><div class="field"><label>Award Title</label><input data-f="title" value="${q(a.title||'')}"/></div><div class="field"><label>Link</label><input data-f="link" value="${q(a.link||'')}"/></div></div>`;return d;}
+function addAward(){const el=document.getElementById('awards-list');el.appendChild(makeAward({},el.querySelectorAll('.item').length));}
+
+// ─── SKILLS ───
+function makeSkillCat(s,i){const d=document.createElement('div');d.className='card item';const ih=(s.items||[]).map(it=>`<div class="skill-row"><input data-sn value="${q(it.name||'')}" placeholder="Skill name"/><input data-si value="${q(it.icon||'')}" placeholder="Icon URL (optional)" style="flex:1.5"/><button class="btn btn-danger btn-icon" onclick="this.closest('.skill-row').remove()"><i class="fas fa-times"></i></button></div>`).join('');d.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><div class="card-num">${i+1}</div><span class="card-title">${q(s.category||'New Category')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="field" style="margin-bottom:12px"><label>Category Name</label><input data-f="category" value="${q(s.category||'')}"/></div><div style="font-size:.76rem;font-weight:500;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Skills</div><div class="sc">${ih}</div><button class="add-btn" style="margin-top:4px" onclick="addSkillItem(this)"><i class="fas fa-plus"></i> Add skill</button>`;return d;}
+function addSkillCat(){const el=document.getElementById('skills-list');el.appendChild(makeSkillCat({items:[]},el.querySelectorAll('.item').length));}
+function addSkillItem(btn){const sc=btn.previousElementSibling;const d=document.createElement('div');d.className='skill-row';d.innerHTML=`<input data-sn placeholder="Skill name"/><input data-si placeholder="Icon URL (optional)" style="flex:1.5"/><button class="btn btn-danger btn-icon" onclick="this.closest('.skill-row').remove()"><i class="fas fa-times"></i></button>`;sc.appendChild(d);d.querySelector('[data-sn]').focus();}
+
+// ─── ONLINE WORKS ───
+function makeOnline(o,i){const d=document.createElement('div');d.className='card item';d.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><div class="card-num">${i+1}</div><span class="card-title">${q(o.title||'New Entry')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Title</label><input data-f="title" value="${q(o.title||'')}"/></div><div class="field"><label>Platform</label><input data-f="type" value="${q(o.type||'')}" placeholder="Google · Coursera"/></div><div class="field"><label>Logo Image Path</label><input data-f="img" value="${q(o.img||'')}" placeholder="assets/img/education/..."/></div><div class="field"><label>Certificate / Profile Link</label><input data-f="link" value="${q(o.link||'')}"/></div></div>`;return d;}
+function addOnline(){const el=document.getElementById('online-list');el.appendChild(makeOnline({},el.querySelectorAll('.item').length));}
+
+// ─── LINKS ───
+function makeLink(l,i){const d=document.createElement('div');d.className='card item';d.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><div class="card-num">${i+1}</div><span class="card-title">${q(l.title||'New Link')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Title</label><input data-f="title" value="${q(l.title||'')}"/></div><div class="field"><label>Icon Class</label><input data-f="icon" value="${q(l.icon||'fas fa-link')}"/><span class="field-hint">FontAwesome e.g. fab fa-github</span></div><div class="field"><label>Description</label><input data-f="desc" value="${q(l.desc||'')}"/></div><div class="field"><label>URL</label><input data-f="url" value="${q(l.url||'')}"/></div></div>`;return d;}
+function addLink(){const el=document.getElementById('links-list');el.appendChild(makeLink({},el.querySelectorAll('.item').length));}
+
+// ─── COLLECT ALL DATA ───
+function collect() {
+  D.hero = {
+    name: gv('h-name'), label: gv('h-label'), description: gv('h-desc'),
+    profilePhoto: gv('h-photo')||'assets/img/profile.jpg', cardRole: gv('h-cardrole'),
+    resumeLink: gv('h-resume'),
+    typedPhrases: [...document.querySelectorAll('.phrase-in')].map(i=>i.value).filter(Boolean),
+    stats: [...document.getElementById('stats-list').querySelectorAll('.card')].map(c=>({
+      num: c.querySelector('[data-s="num"]').value,
+      suffix: c.querySelector('[data-s="sfx"]').value,
+      label: c.querySelector('[data-s="lbl"]').value
+    })),
+    badges: gv('h-badges').split(',').map(s=>s.trim()).filter(Boolean),
+    socials: { linkedin:gv('s-linkedin'), github:gv('s-github'), email:gv('s-email'), scholar:gv('s-scholar'), orcid:gv('s-orcid'), ieeeProfile:gv('s-ieee') }
+  };
+  D.about = { bio1:gv('a-bio1'), bio2:gv('a-bio2'), interests: D.about?.interests||[], details:{ birthday:gv('a-bday'), location:gv('a-loc'), email:gv('a-email'), phone:gv('a-phone'), orcid:gv('a-orcid'), researchgate:gv('a-rg') } };
+  D.research = cList('research-list', c=>({ year:f(c,'year'), title:f(c,'title'), link:f(c,'link') }));
+  D.experience = cList('experience-list', c=>({ org:f(c,'org'), orgLink:f(c,'orgLink'), role:f(c,'role'), period:f(c,'period'), icon:f(c,'icon'), bullets:[...c.querySelectorAll('[data-b]')].map(t=>t.value).filter(Boolean) }));
+  D.projects = cList('projects-list', c=>({ img:f(c,'img'), tags:f(c,'tags').split(',').map(s=>s.trim()).filter(Boolean), title:f(c,'title'), desc:f(c,'desc'), link:f(c,'link') }));
+  D.certifications = cList('cert-list', c=>({ img:f(c,'img'), name:f(c,'name'), issuer:f(c,'issuer'), link:f(c,'link') }));
+  D.awards = cList('awards-list', c=>({ icon:f(c,'icon'), title:f(c,'title'), link:f(c,'link') }));
+  D.skills = cList('skills-list', c=>({ category:f(c,'category'), items:[...c.querySelectorAll('[data-sn]')].map((inp,i)=>({ name:inp.value, icon:c.querySelectorAll('[data-si]')[i]?.value||'' })).filter(s=>s.name) }));
+  D.education = { institution:gv('e-name'), institutionLink:gv('e-link'), degree:gv('e-degree'), period:gv('e-period'), logoImg:gv('e-logo')||'assets/img/education/srm.png', courses:gv('e-courses').split(',').map(s=>s.trim()).filter(Boolean) };
+  D.onlineWorks = cList('online-list', c=>({ img:f(c,'img'), title:f(c,'title'), type:f(c,'type'), link:f(c,'link') }));
+  D.links = cList('links-list', c=>({ icon:f(c,'icon'), title:f(c,'title'), desc:f(c,'desc'), url:f(c,'url') }));
+  D.contact = { intro:gv('c-intro'), location:gv('c-loc'), email:gv('c-email'), altEmail:gv('c-alt'), phone:gv('c-phone'), linkedin:gv('c-li') };
+  D.meta = { navInitials:gv('m-initials')||'MH', copyrightYear:gv('m-year')||'2025', ieeeProfileUrl:gv('m-ieee') };
+}
+function cList(id, extractor) { return [...document.getElementById(id).querySelectorAll('.item')].map(extractor); }
+function f(card, field) { return card.querySelector(`[data-f="${field}"]`)?.value || ''; }
+
+// ─── SAVE ───
+function saveAll() {
+  collect();
+  const blob = new Blob([JSON.stringify(D, null, 2)], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'portfolio-data.json'; a.click();
+  URL.revokeObjectURL(a.href);
+  updatePreview();
+  toast('portfolio-data.json downloaded — replace the file in your project folder!', 'success');
+}
+function copyJSON() { collect(); navigator.clipboard.writeText(JSON.stringify(D,null,2)); toast('JSON copied to clipboard', 'success'); }
+function importJSON() { try { D = JSON.parse(document.getElementById('import-box').value); populate(); toast('Data imported', 'success'); } catch(e) { toast('Invalid JSON', 'error'); } }
+function updatePreview() { const p=document.getElementById('data-preview'); if(p) p.textContent=JSON.stringify(D,null,2); }
+
+// ─── NAV ───
+const TITLES = {hero:'Hero',about:'About',research:'Research',experience:'Experience',projects:'Projects',certifications:'Certifications',awards:'Awards',skills:'Skills',education:'Education',online:'Online Works',links:'Links',contact:'Contact',site:'Site Settings',exportimport:'Export / Import'};
+function show(name) {
+  document.querySelectorAll('.section-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));
+  document.getElementById('panel-'+name)?.classList.add('active');
+  const items = document.querySelectorAll('.nav-item');
+  const match = [...items].find(el=>el.getAttribute('onclick')?.includes(`'${name}'`));
+  if(match) match.classList.add('active');
+  document.getElementById('topbarTitle').textContent = TITLES[name]||name;
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='exportimport') updatePreview();
+}
+
+// ─── UTILS ───
+function gv(id){const el=document.getElementById(id);return el?el.value:'';}
+function sv(id,val){const el=document.getElementById(id);if(el)el.value=val||'';}
+function q(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function toast(msg, type='success'){const t=document.getElementById('toast');t.className='show '+type;t.innerHTML=`<i class="fas fa-${type==='success'?'check-circle':'exclamation-circle'}"></i> ${msg}`;clearTimeout(t._t);t._t=setTimeout(()=>{t.className=''},4200);}
+
+loadData();
+</script>
+</body>
+</html>
