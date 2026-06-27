@@ -2,17 +2,13 @@
 <html lang="en">
 <head>
   <link rel="icon" type="image/png" href="favicon.png" />
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-
-    <title>Hi, fellow humans</title>
-    <meta content="" name="descriptison" />
-    <meta content="" name="keywords" />
-
   <meta charset="UTF-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Madhesh H — Software Developer & Cloud Technologist. B.Tech CSE at SRM University. researcher, and builder." />
-  <title>Madhesh H — Developer & Researcher</title>
+  <meta name="description" content="" id="meta-desc" />
+  <title id="page-title">Loading...</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
@@ -23,7 +19,7 @@
 
 <!-- ── NAVBAR ── -->
 <nav>
-  <a href="#hero" class="nav-logo">M<span></span>H</a>
+  <a href="#hero" class="nav-logo" id="nav-logo">M<span></span>H</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#research">Research</a></li>
@@ -34,7 +30,7 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="https://drive.google.com/file/d/1HKhJ5_yHlJepoMQEomijM1JlhXFPa7E8/view?usp=sharing" target="_blank" class="nav-cta">Resume ↗</a>
+  <a href="#" target="_blank" class="nav-cta" id="nav-resume">Resume ↗</a>
   <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
   </div>
@@ -48,7 +44,7 @@
   <a href="#certifications" onclick="closeMenu()">Certifications</a>
   <a href="#skills" onclick="closeMenu()">Skills</a>
   <a href="#contact" onclick="closeMenu()">Contact</a>
-  <a href="https://drive.google.com/file/d/1HKhJ5_yHlJepoMQEomijM1JlhXFPa7E8/view?usp=sharing" target="_blank">Resume ↗</a>
+  <a href="#" target="_blank" id="mobile-resume">Resume ↗</a>
 </div>
 
 <!-- ── HERO ── -->
@@ -58,55 +54,24 @@
   <div class="hero-glow2"></div>
   <div class="hero-content">
     <div class="hero-text">
-      <p class="hero-label">Based in Chennai, India</p>
-      <h1>Madhesh H</h1>
+      <p class="hero-label" id="hero-label"></p>
+      <h1 id="hero-name"></h1>
       <div class="hero-title-sub">
         <span id="typed-text"></span><span class="cursor"></span>
       </div>
-      <p class="hero-desc">
-        Focused and enthusiastic developer with a keen interest in software development and cloud technology. Published researcher with multiple IEEE papers. Building things that matter.
-      </p>
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-num">5<span>+</span></div>
-          <div class="stat-label">IEEE Papers</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">9<span>+</span></div>
-          <div class="stat-label">Certifications</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">100<span>+</span></div>
-          <div class="stat-label">Cloud Labs</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">500<span>+</span></div>
-          <div class="stat-label">Programs Solved</div>
-        </div>
-      </div>
+      <p class="hero-desc" id="hero-desc"></p>
+      <div class="hero-stats" id="hero-stats"></div>
       <div class="hero-btns">
         <a href="#projects" class="btn-primary"><i class="fas fa-code"></i> View Projects</a>
         <a href="#contact" class="btn-ghost"><i class="fas fa-paper-plane"></i> Get in Touch</a>
       </div>
     </div>
-
     <div class="hero-card">
-      <img class="hero-avatar" src="assets/img/profile.jpg" alt="Madhesh H" />
-      <h3>Madhesh H</h3>
-      <div class="card-role">Developer · Researcher </div>
-      <div class="hero-badges">
-        <span class="badge badge-aws">AWS Certified</span>
-        <span class="badge badge-cloud">Google Cloud</span>
-        <span class="badge badge-ieee">IEEE GRSS</span>
-        <span class="badge badge-research">5x+ IEEE Author</span>
-      </div>
-      <div class="hero-socials">
-        <a href="https://www.linkedin.com/in/madheshh" target="_blank" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.github.com/madddx" target="_blank" class="social-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="mailto:madheshh.official@gmail.com" class="social-btn" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://scholar.google.com/citations?user=IX36AoYAAAAJ&hl=en" target="_blank" class="social-btn" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-        <a href="https://orcid.org/0009-0003-8768-6008" target="_blank" class="social-btn" aria-label="ORCID"><i class="fas fa-id-card"></i></a>
-      </div>
+      <img class="hero-avatar" id="hero-avatar" src="assets/img/profile.jpg" alt="" />
+      <h3 id="hero-card-name"></h3>
+      <div class="card-role" id="hero-card-role"></div>
+      <div class="hero-badges" id="hero-badges"></div>
+      <div class="hero-socials" id="hero-socials"></div>
     </div>
   </div>
 </section>
@@ -118,49 +83,11 @@
     <h2>About <em>Me</em></h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>
-          I'm a B.Tech Computer Science Engineering student at SRM University, Chennai. My passion lies at the intersection of software development, cloud computing, and research — building systems that solve real-world problems with elegant engineering.
-        </p>
-        <p>
-          As the Ex-Chairperson of the IEEE GRSS Chapter at SRMIST, I've had the privilege of leading technical events, mentoring peers, and fostering a culture of innovation. My work spans from IoT systems and cloud architectures to game development and missile guidance simulations.
-        </p>
-        <div class="about-details">
-          <div class="detail-item">
-            <span class="detail-label">Birthday</span>
-            <span class="detail-value">09 July 2005</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Location</span>
-            <span class="detail-value">Chennai, India</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Email</span>
-            <span class="detail-value"><a href="mailto:madheshh.official@gmail.com">madheshh.official@gmail.com</a></span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Phone</span>
-            <span class="detail-value">+91 98409 12915</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">ORCID</span>
-            <span class="detail-value"><a href="https://orcid.org/0009-0003-8768-6008" target="_blank">0009-0003-8768-6008</a></span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">ResearchGate</span>
-            <span class="detail-value"><a href="https://www.researchgate.net/profile/Madhesh-H-2" target="_blank">View Profile</a></span>
-          </div>
-        </div>
+        <p id="about-bio1"></p>
+        <p id="about-bio2"></p>
+        <div class="about-details" id="about-details"></div>
       </div>
-      <div class="about-interests">
-        <div class="interest-item"><div class="interest-icon"><i class="fas fa-code"></i></div><span class="interest-name">Software Development</span></div>
-        <div class="interest-item"><div class="interest-icon"><i class="fas fa-cloud"></i></div><span class="interest-name">Cloud Computing</span></div>
-        <div class="interest-item"><div class="interest-icon"><i class="fas fa-vr-cardboard"></i></div><span class="interest-name">Virtual Reality</span></div>
-        <div class="interest-item"><div class="interest-icon"><i class="fas fa-gamepad"></i></div><span class="interest-name">Game Designing</span></div>
-        <div class="interest-item"><div class="interest-icon"><i class="fas fa-chart-line"></i></div><span class="interest-name">Data Visualization</span></div>
-        <div class="interest-item"><div class="interest-icon"><i class="fas fa-brain"></i></div><span class="interest-name">Algorithms & AI</span></div>
-        <div class="interest-item"><div class="interest-icon"><i class="fas fa-calendar-check"></i></div><span class="interest-name">Event Management</span></div>
-        <div class="interest-item"><div class="interest-icon"><i class="fas fa-cloud-upload-alt"></i></div><span class="interest-name">Cloud Applications</span></div>
-      </div>
+      <div class="about-interests" id="about-interests"></div>
     </div>
   </div>
 </section>
@@ -170,25 +97,9 @@
   <div class="section-inner">
     <p class="section-label">Publications</p>
     <h2>IEEE <em>Research</em></h2>
-    <div class="research-grid">
-      <div class="research-card">
-        <span class="research-badge"><i class="fas fa-file-alt"></i> IEEE Xplore · 2024</span>
-        <h3>Decentralized Cloud Systems: A Novel Framework for IoT Scalability and Security</h3>
-        <a href="https://ieeexplore.ieee.org/document/11170709" target="_blank" class="research-link">Read Paper <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="research-card">
-        <span class="research-badge"><i class="fas fa-file-alt"></i> IEEE Xplore · 2024</span>
-        <h3>Deep Learning-Based Rainfall Prediction for Coastal Cities: A Case Study of Chennai</h3>
-        <a href="https://ieeexplore.ieee.org/document/10984540" target="_blank" class="research-link">Read Paper <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="research-card">
-        <span class="research-badge"><i class="fas fa-file-alt"></i> IEEE Xplore · 2024</span>
-        <h3>A Scalable and Secure Cloud Solution for File Management with AWS and EC2</h3>
-        <a href="https://ieeexplore.ieee.org/document/10985586" target="_blank" class="research-link">Read Paper <i class="fas fa-arrow-right"></i></a>
-      </div>
-    </div>
+    <div class="research-grid" id="research-grid"></div>
     <br/>
-    <a href="https://ieeexplore.ieee.org/author/985533095720725" target="_blank" class="btn-ghost" style="display:inline-flex;align-items:center;gap:.5rem;margin-top:.5rem;">
+    <a href="#" target="_blank" class="btn-ghost" id="ieee-profile-link" style="display:inline-flex;align-items:center;gap:.5rem;margin-top:.5rem;">
       <i class="fas fa-external-link-alt"></i> View IEEE Author Profile
     </a>
   </div>
@@ -199,52 +110,7 @@
   <div class="section-inner">
     <p class="section-label">Work & Leadership</p>
     <h2>My <em>Experience</em></h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot"><i class="fas fa-users"></i></div>
-        <div class="timeline-content">
-          <div class="timeline-head">
-            <div class="timeline-org"><a href="https://ieee-grss-srmist.vercel.app/" target="_blank">IEEE GRSS — SRMIST</a></div>
-            <span class="timeline-period">Jan 2025 — Apr 2026</span>
-          </div>
-          <div class="timeline-role">President</div>
-          <ul>
-            <li>Led multiple technical events including workshops, hackathons, industry visits, and research conferences with a diverse audience of students and professionals.</li>
-            <li>Spearheaded initiatives to promote research in geoscience and remote sensing, fostering collaboration between academia and industry.</li>
-            <li>Recognized for leadership and contributions to the chapter's growth and impact within the university community.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"><i class="fab fa-google"></i></div>
-        <div class="timeline-content">
-          <div class="timeline-head">
-            <div class="timeline-org"><a href="https://www.linkedin.com/posts/madheshh_googlecloud-cloudchampion-techinnovation-activity-7312386385095626752-Yviy" target="_blank">Google Cloud Skills</a></div>
-            <span class="timeline-period">Jul 2024 — Dec 2025</span>
-          </div>
-          <div class="timeline-role">Cohort Member · Champion</div>
-          <ul>
-            <li>Earned recognition for mastering cloud solutions including security, DevOps, AI/ML, and cloud-native applications.</li>
-            <li>Successfully completed 100+ hands-on labs and certifications across various cloud technologies.</li>
-            <li>Awarded Google Cloud Champion Milestone swags for outstanding dedication and continuous learning.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"><i class="fas fa-laptop-code"></i></div>
-        <div class="timeline-content">
-          <div class="timeline-head">
-            <div class="timeline-org"><a href="https://www.srmist.edu.in/department/department-of-computational-intelligence/cintel-student-association/" target="_blank">CINTEL Association — SRMIST</a></div>
-            <span class="timeline-period">Aug 2024 — Mar 2025</span>
-          </div>
-          <div class="timeline-role">Technical & PR Member</div>
-          <ul>
-            <li>Received a Letter of Appreciation for contributions and dedication to events conducted between Aug 2024 and Jan 2025.</li>
-            <li>Coordinated with external organizations for joint events and hackathons, expanding the club's network.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <div class="timeline" id="timeline"></div>
   </div>
 </section>
 
@@ -253,105 +119,7 @@
   <div class="section-inner">
     <p class="section-label">What I've Built</p>
     <h2>Featured <em>Projects</em></h2>
-    <div class="projects-grid">
-
-      <div class="project-card">
-        <div class="project-img">
-          <img src="assets/img/project/Aws proj.jpeg" alt="AWS File Management System" loading="lazy" />
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag">AWS</span><span class="tag">Cloud</span><span class="tag">EC2</span></div>
-          <h3>AWS File Management System</h3>
-          <p class="project-desc">A scalable and secure cloud-based file management solution leveraging AWS and EC2. Published as an IEEE paper on secure cloud architectures.</p>
-          <a href="https://github.com/madddx/CRMCloudPush/blob/main/README.md" target="_blank" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img">
-          <img src="assets/img/project/HyperTrack.jpg" alt="HyperTrack Missile Guidance" loading="lazy" />
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag">Python</span><span class="tag">Simulation</span><span class="tag">Algorithms</span></div>
-          <h3>HyperTrack Missile Guidance System</h3>
-          <p class="project-desc">An autonomous missile guidance simulation implementing hyper-tracking algorithms for precision targeting and real-time trajectory correction.</p>
-          <a href="https://github.com/madddx/DRDO-Dare-To-Dream-5.0/blob/main/README.md" target="_blank" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img">
-          <img src="assets/img/project/2D Game in Unity Engine.jpg" alt="2D Game" loading="lazy" />
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Game Dev</span></div>
-          <h3>2D Dodge It — Unity Engine</h3>
-          <p class="project-desc">An engaging 2D dodge-style game built in Unity Engine. Demonstrates physics, game logic, and interactive level design concepts.</p>
-          <a href="https://github.com/madddx/2D-Game-Dodge-It/blob/main/README.md" target="_blank" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img">
-          <img src="assets/img/project/Personal_Server.jpg" alt="Personal Server" loading="lazy" />
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag">IoT</span><span class="tag">NodeMCU</span><span class="tag">ESP8266</span></div>
-          <h3>Secure Server with NodeMCU & SD Module</h3>
-          <p class="project-desc">A personal IoT server built using NodeMCU ESP8266 and SD module, enabling secure local file storage and wireless data access.</p>
-          <a href="https://github.com/madddx/Personal-Server/blob/main/README.md" target="_blank" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img">
-          <img src="assets/img/project/Decentralized and Distributed Cloud Systems.jpg" alt="Decentralized Cloud" loading="lazy" />
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag">Cloud</span><span class="tag">IoT</span><span class="tag">Security</span></div>
-          <h3>Decentralized & Distributed Cloud Systems</h3>
-          <p class="project-desc">A novel framework for IoT scalability and security using decentralized cloud systems. IEEE published research project.</p>
-          <a href="https://github.com/madddx/House-To-House-Server-Systems/blob/main/README.md" target="_blank" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img">
-          <img src="assets/img/project/ARAMC.png" alt="ARAMC" loading="lazy" />
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag">Robotics</span><span class="tag">IoT</span><span class="tag">Autonomous</span></div>
-          <h3>ARAMC: Autonomous Rover — Dual Controls</h3>
-          <p class="project-desc">An autonomous rover with both automatic and manual control modes. Implements computer vision and manual override capabilities.</p>
-          <a href="https://github.com/madddx/ARAMC-Autonomous-Rover-with-Automatic-and-Manual-Controls/blob/main/README.md" target="_blank" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img">
-          <img src="assets/img/project/Optimized and Secure Personal Cloud Storage.jpg" alt="Personal Cloud" loading="lazy" />
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag">Cloud</span><span class="tag">Security</span><span class="tag">Storage</span></div>
-          <h3>Optimized & Secure Personal Cloud Storage</h3>
-          <p class="project-desc">A personal cloud storage platform with end-to-end encryption, optimized bandwidth utilization, and multi-device sync support.</p>
-          <a href="https://github.com/madddx/Arduino-ESP8266-SD-Card-File-Transfer-System/blob/main/README.md" target="_blank" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-img">
-          <img src="assets/img/project/Mathematical Indexes For Compounds.jpg" alt="Math Indexes" loading="lazy" />
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag">Python</span><span class="tag">Math</span><span class="tag">Analysis</span></div>
-          <h3>Mathematical Indexes for Compounds</h3>
-          <p class="project-desc">A computational tool for calculating mathematical indexes and topological descriptors for chemical compounds and molecular structures.</p>
-          <a href="https://github.com/madddx/MathematicalIndexesForCompounds/blob/main_python/README.md" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-    </div>
+    <div class="projects-grid" id="projects-grid"></div>
   </div>
 </section>
 
@@ -360,44 +128,7 @@
   <div class="section-inner">
     <p class="section-label">Credentials</p>
     <h2>Certifi<em>cations</em></h2>
-    <div class="cert-grid">
-      <a href="Certifications/AWS_Certified_Solution_Architect_Associate.html" target="_blank" class="cert-card">
-        <div class="cert-logo"><img src="assets/img/certification/solution architect.png" alt="AWS" /></div>
-        <div class="cert-info"><div class="cert-name">AWS Certified Solution Architect</div><div class="cert-issuer">Amazon Web Services</div></div>
-      </a>
-      <a href="Certifications/AWS_Certified_Cloud_Practitioner.html" target="_blank" class="cert-card">
-        <div class="cert-logo"><img src="assets/img/certification/cloud practitioner.png" alt="AWS" /></div>
-        <div class="cert-info"><div class="cert-name">AWS Certified Cloud Practitioner</div><div class="cert-issuer">Amazon Web Services</div></div>
-      </a>
-      <a href="Certifications/AWS_Certified_AI_Practitioner.html" target="_blank" class="cert-card">
-        <div class="cert-logo"><img src="assets/img/certification/AI Practitioner.png" alt="AWS AI" /></div>
-        <div class="cert-info"><div class="cert-name">AWS Certified AI Practitioner</div><div class="cert-issuer">Amazon Web Services</div></div>
-      </a>
-      <a href="Certifications/Salesforce_Agentforce_Specialist.html" target="_blank" class="cert-card">
-        <div class="cert-logo"><img src="assets/img/certification/Salesforce_Agentforce_Specialist.png" alt="Salesforce" /></div>
-        <div class="cert-info"><div class="cert-name">Salesforce Agentforce Specialist</div><div class="cert-issuer">Salesforce</div></div>
-      </a>
-      <a href="Certifications/Github_Foundation.html" target="_blank" class="cert-card">
-        <div class="cert-logo"><img src="assets/img/certification/github-foundations.png" alt="GitHub" /></div>
-        <div class="cert-info"><div class="cert-name">GitHub Foundations Certification</div><div class="cert-issuer">GitHub</div></div>
-      </a>
-      <a href="Certifications/Certified_Associate_in_Cybersecurity.html" target="_blank" class="cert-card">
-        <div class="cert-logo"><img src="assets/img/certification/fortinet-certified-associate-cybersecurity.png" alt="Fortinet" /></div>
-        <div class="cert-info"><div class="cert-name">Certified Associate in Cybersecurity</div><div class="cert-issuer">Fortinet</div></div>
-      </a>
-      <a href="Certifications/Google_Cloud_Computing_Certificate.html" target="_blank" class="cert-card">
-        <div class="cert-logo"><img src="assets/img/certification/google-cloud-computing-foundations-certificate.png" alt="Google Cloud" /></div>
-        <div class="cert-info"><div class="cert-name">Google Cloud Computing Foundations</div><div class="cert-issuer">Google Cloud</div></div>
-      </a>
-      <a href="Certifications/Cisco-Networking-Basics.html" target="_blank" class="cert-card">
-        <div class="cert-logo"><img src="assets/img/certification/cisco-networking-basics.png" alt="Cisco" /></div>
-        <div class="cert-info"><div class="cert-name">Cisco Networking Basics</div><div class="cert-issuer">Cisco</div></div>
-      </a>
-      <a href="Certifications/Alteryx-Foundational-Micro-Credential.html" target="_blank" class="cert-card">
-        <div class="cert-logo"><img src="assets/img/certification/alteryx-foundational-micro-credential.png" alt="Alteryx" /></div>
-        <div class="cert-info"><div class="cert-name">Alteryx Foundational Micro Credential</div><div class="cert-issuer">Alteryx</div></div>
-      </a>
-    </div>
+    <div class="cert-grid" id="cert-grid"></div>
   </div>
 </section>
 
@@ -406,28 +137,7 @@
   <div class="section-inner">
     <p class="section-label">Recognition</p>
     <h2>Awards & <em>Achievements</em></h2>
-    <div class="awards-grid">
-      <a href="https://www.linkedin.com/posts/madheshh_javaexpo2024-bestprojectaward-srmist-activity-7444112320450191360-TerI" target="_blank" class="award-card">
-        <div class="award-icon">🏆</div>
-        <div class="award-title">Java Expo'24 —  Winner </div>
-      </a>
-      <a href="https://www.linkedin.com/posts/madheshh_iot-smartsystems-srmist-activity-7326984265081016321-cJJO" target="_blank" class="award-card">
-        <div class="award-icon">🥇</div>
-        <div class="award-title">Sense Actuate'25 — Best Project</div>
-      </a>
-      <a href="https://www.linkedin.com/posts/madheshh_engineeringgraphics-autocad-mechanicalengineering-activity-7208869672073457664-Oyny" target="_blank" class="award-card">
-        <div class="award-icon">🎨</div>
-        <div class="award-title">Creative Ingenuity'24 — 2nd Runner up</div>
-      </a>
-      <a href="https://www.linkedin.com/posts/madheshh_googlecloud-cloudjourney-techgrowth-activity-7401895943089917952-pmOp" target="_blank" class="award-card">
-        <div class="award-icon">☁️</div>
-        <div class="award-title">Google Cloud Champion Milestone</div>
-      </a>
-      <a href="https://drive.google.com/file/d/1gZeLD8ltKWPb-cc-vFJuq7hIYcfNB5yo/view?usp=drive_link" target="_blank" class="award-card">
-        <div class="award-icon">💡</div>
-        <div class="award-title">Hack For Humanity — 1st Runner Up</div>
-      </a>
-    </div>
+    <div class="awards-grid" id="awards-grid"></div>
   </div>
 </section>
 
@@ -436,38 +146,7 @@
   <div class="section-inner">
     <p class="section-label">Tech Stack</p>
     <h2>Skills & <em>Tools</em></h2>
-    <div class="skills-grid">
-      <div class="skill-category">
-        <h3>Languages</h3>
-        <div class="skill-items">
-          <div class="skill-chip"><img src="https://www.vectorlogo.zone/logos/python/python-icon.svg" alt="Python" />Python</div>
-          <div class="skill-chip"><img src="https://www.vectorlogo.zone/logos/java/java-icon.svg" alt="Java" />Java</div>
-          <div class="skill-chip"><img src="https://www.vectorlogo.zone/logos/open-std_c/open-std_c-icon~alt.svg" alt="C" />C</div>
-          <div class="skill-chip"><img src="https://www.vectorlogo.zone/logos/mysql/mysql-icon.svg" alt="MySQL" />MySQL</div>
-        </div>
-      </div>
-      <div class="skill-category">
-        <h3>Cloud & DevOps</h3>
-        <div class="skill-items">
-          <div class="skill-chip"><img src="https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg" alt="AWS" />AWS</div>
-          <div class="skill-chip"><img src="https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg" alt="GCP" />Google Cloud</div>
-          <div class="skill-chip">EC2 / S3</div>
-          <div class="skill-chip">Cloud IAM</div>
-          <div class="skill-chip">DevOps</div>
-        </div>
-      </div>
-      <div class="skill-category">
-        <h3>Tools & Other</h3>
-        <div class="skill-items">
-          <div class="skill-chip"><img src="https://www.vectorlogo.zone/logos/unity3d/unity3d-icon.svg" alt="Unity" />Unity 3D</div>
-          <div class="skill-chip">Event Mgmt</div>
-          <div class="skill-chip">Data Analysis</div>
-          <div class="skill-chip">Presentations</div>
-          <div class="skill-chip">IoT / ESP8266</div>
-          <div class="skill-chip">Deep Learning</div>
-        </div>
-      </div>
-    </div>
+    <div class="skills-grid" id="skills-grid"></div>
   </div>
 </section>
 
@@ -476,22 +155,7 @@
   <div class="section-inner">
     <p class="section-label">Academic Background</p>
     <h2>Edu<em>cation</em></h2>
-    <div class="edu-card">
-      <div class="edu-logo">
-        <img src="assets/img/education/srm.png" alt="SRM University" />
-      </div>
-      <div class="edu-info">
-        <h3><a href="https://www.srmist.edu.in/" target="_blank" style="color:inherit;text-decoration:none;">SRM Institute of Science & Technology</a></h3>
-        <div class="edu-degree">B.Tech — Computer Science Engineering</div>
-        <div class="edu-period">August 2023 — Present</div>
-        <div class="edu-courses">
-          <span class="tag">Data Structures & Algorithms</span>
-          <span class="tag">Object Oriented Programming</span>
-          <span class="tag">Software Development</span>
-          <span class="tag">Cloud Computing</span>
-        </div>
-      </div>
-    </div>
+    <div class="edu-card" id="edu-card"></div>
   </div>
 </section>
 
@@ -500,28 +164,7 @@
   <div class="section-inner">
     <p class="section-label">Continuous Learning</p>
     <h2>Online <em>Works</em></h2>
-    <div class="online-grid">
-      <a href="https://www.coursera.org/account/accomplishments/professional-cert/DQDTR4W3T8AX" target="_blank" class="online-card">
-        <div class="online-logo"><img src="assets/img/education/google.png" alt="Google" /></div>
-        <div class="online-info"><h4>Data Analytics</h4><div class="online-type">Google · Coursera</div></div>
-      </a>
-      <a href="https://www.cloudskillsboost.google/public_profiles/5ba25793-b3fa-457a-91f3-508e068e59b4" target="_blank" class="online-card">
-        <div class="online-logo"><img src="assets/img/education/qwik.png" alt="GCloud" /></div>
-        <div class="online-info"><h4> Skill Badges</h4><div class="online-type">Google Cloud Skills Boost</div></div>
-      </a>
-      <a href="https://drive.google.com/file/d/1HQQrB8aM7sNodXCQOHiSfZEgdXAQOUm7/view?usp=drive_link" target="_blank" class="online-card">
-        <div class="online-logo"><img src="assets/img/education/tcs.png" alt="TCS" /></div>
-        <div class="online-info"><h4>Cyber Security</h4><div class="online-type">TCS iON</div></div>
-      </a>
-      <a href="https://drive.google.com/file/d/1oy3ZgVpM-zvksLGyb0Bfy4EpAvCKfvXX/view?usp=drive_link" target="_blank" class="online-card">
-        <div class="online-logo"><img src="assets/img/education/srmf.png" alt="SRM" /></div>
-        <div class="online-info"><h4>eLab C Programming</h4><div class="online-type">SRMIST</div></div>
-      </a>
-      <a href="https://drive.google.com/file/d/11uS4MKqvz7Xb7qxknybl9l62zqj0LVXt/view?usp=drive_link" target="_blank" class="online-card">
-        <div class="online-logo"><img src="assets/img/education/mindler.png" alt="Mindler" /></div>
-        <div class="online-info"><h4>Certification of Internship</h4><div class="online-type">Mindler</div></div>
-      </a>
-    </div>
+    <div class="online-grid" id="online-grid"></div>
   </div>
 </section>
 
@@ -530,56 +173,7 @@
   <div class="section-inner">
     <p class="section-label">Find Me Online</p>
     <h2>Important <em>Links</em></h2>
-    <div class="links-grid">
-      <a href="https://www.researchgate.net/profile/Madhesh-H-2" target="_blank" class="link-card">
-        <div class="link-icon"><i class="fas fa-flask"></i></div>
-        <div><h4>ResearchGate</h4><div class="link-desc">Published research works</div></div>
-      </a>
-      <a href="https://ieeexplore.ieee.org/author/985533095720725" target="_blank" class="link-card">
-        <div class="link-icon"><i class="fas fa-satellite"></i></div>
-        <div><h4>IEEE Xplore</h4><div class="link-desc">IEEE author profile</div></div>
-      </a>
-      <a href="https://orcid.org/0009-0003-8768-6008" target="_blank" class="link-card">
-        <div class="link-icon"><i class="fas fa-id-badge"></i></div>
-        <div><h4>ORCID</h4><div class="link-desc">Persistent researcher ID</div></div>
-      </a>
-      <a href="https://scholar.google.com/citations?user=IX36AoYAAAAJ&hl=en" target="_blank" class="link-card">
-        <div class="link-icon"><i class="fas fa-graduation-cap"></i></div>
-        <div><h4>Google Scholar</h4><div class="link-desc">Citations & publications</div></div>
-      </a>
-      <a href="https://drive.google.com/file/d/1HKhJ5_yHlJepoMQEomijM1JlhXFPa7E8/view?usp=drive_link" target="_blank" class="link-card">
-        <div class="link-icon"><i class="fas fa-file-pdf"></i></div>
-        <div><h4>Resume</h4><div class="link-desc">Download my resume</div></div>
-      </a>
-      <a href="https://github.com/madddx" target="_blank" class="link-card">
-        <div class="link-icon"><i class="fab fa-github"></i></div>
-        <div><h4>GitHub</h4><div class="link-desc">My repositories</div></div>
-      </a>
-      <a href="https://www.linkedin.com/in/madheshh/" target="_blank" class="link-card">
-        <div class="link-icon"><i class="fab fa-linkedin-in"></i></div>
-        <div><h4>LinkedIn</h4><div class="link-desc">Connect with me</div></div>
-      </a>
-      <a href="https://www.cloudskillsboost.google/public_profiles/5ba25793-b3fa-457a-91f3-508e068e59b4" target="_blank" class="link-card">
-        <div class="link-icon"><i class="fab fa-google"></i></div>
-        <div><h4>GCloud Profile</h4><div class="link-desc">Cloud credentials</div></div>
-      </a>
-      <a href="https://www.credly.com/users/madhesh-h.8fc2401d" target="_blank" class="link-card">
-        <div class="link-icon"><i class="fas fa-certificate"></i></div>
-        <div><h4>Credly Badges</h4><div class="link-desc">Verified credentials</div></div>
-      </a>
-      <a href="https://leetcode.com/u/Madddx/" target="_blank" class="link-card">
-        <div class="link-icon"><i class="fas fa-code"></i></div>
-        <div><h4>LeetCode</h4><div class="link-desc">Problem solving & DSA</div></div>
-      </a>
-      <a href="https://www.hackerrank.com/profile/madhesh090725" target="_blank" class="link-card">
-        <div class="link-icon"><i class="fas fa-terminal"></i></div>
-        <div><h4>HackerRank</h4><div class="link-desc">Coding challenges</div></div>
-      </a>
-      <a href="https://drive.google.com/drive/folders/15cmgVdl4du2Z8yE8Y-lIpzmBgjYFMEuk" target="_blank" class="link-card">
-        <div class="link-icon"><i class="fas fa-folder-open"></i></div>
-        <div><h4>Certificate Folder</h4><div class="link-desc">All my certifications</div></div>
-      </a>
-    </div>
+    <div class="links-grid" id="links-grid"></div>
   </div>
 </section>
 
@@ -590,44 +184,8 @@
     <h2>Say <em>Hello</em></h2>
     <div class="contact-layout">
       <div class="contact-info">
-        <p>I'm always open to discussing new projects, interesting ideas, research collaborations, or opportunities to be part of exciting work. Drop me a message!</p>
-        <div class="contact-items">
-          <div class="contact-item">
-            <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <div class="contact-item-text">
-              <span class="contact-item-label">Location</span>
-              <span class="contact-item-value">Chennai, Tamil Nadu, India</span>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
-            <div class="contact-item-text">
-              <span class="contact-item-label">Primary Email</span>
-              <span class="contact-item-value"><a href="mailto:madheshh.official@gmail.com">madheshh.official@gmail.com</a></span>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon"><i class="fas fa-envelope-open"></i></div>
-            <div class="contact-item-text">
-              <span class="contact-item-label">Alt Email</span>
-              <span class="contact-item-value"><a href="mailto:madhesh090725@gmail.com">madhesh090725@gmail.com</a></span>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
-            <div class="contact-item-text">
-              <span class="contact-item-label">Phone</span>
-              <span class="contact-item-value">+91 98409 12915</span>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon"><i class="fab fa-linkedin-in"></i></div>
-            <div class="contact-item-text">
-              <span class="contact-item-label">LinkedIn</span>
-              <span class="contact-item-value"><a href="https://www.linkedin.com/in/madheshh" target="_blank">linkedin.com/in/madheshh</a></span>
-            </div>
-          </div>
-        </div>
+        <p id="contact-intro"></p>
+        <div class="contact-items" id="contact-items"></div>
       </div>
       <div class="contact-form">
         <h3>Send a Message</h3>
@@ -658,16 +216,351 @@
 <!-- ── FOOTER ── -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand">M<span></span>H</div>
-    <span class="footer-copy">© 2025 Madhesh H. All rights reserved.</span>
-    <div class="footer-socials">
-      <a href="https://www.linkedin.com/in/madheshh" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://www.github.com/madddx" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
-      <a href="mailto:madheshh.official@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
-    </div>
+    <div class="footer-brand" id="footer-brand">M<span></span>H</div>
+    <span class="footer-copy" id="footer-copy"></span>
+    <div class="footer-socials" id="footer-socials"></div>
   </div>
 </footer>
 
 <script src="script.js"></script>
+<script>
+// ═══════════════════════════════════════════
+//  PORTFOLIO RENDERER — reads portfolio-data.json
+// ═══════════════════════════════════════════
+
+let PHRASES = [];
+
+function showLoadError(msg) {
+  const b = document.createElement('div');
+  b.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#1a0a0a;color:#ff6b6b;font-family:monospace;font-size:14px;padding:14px 20px;border-bottom:2px solid #ff3333;display:flex;align-items:center;gap:12px';
+  b.innerHTML = '<span style="font-size:18px">⚠️</span><span>' + msg + '</span>';
+  document.body.prepend(b);
+}
+
+async function initPortfolio() {
+  let data;
+  try {
+    const res = await fetch('portfolio-data.json', {
+      cache: 'no-store',
+      headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache' }
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    data = await res.json();
+  } catch(e) {
+    console.error('Could not load portfolio-data.json:', e);
+    showLoadError('Could not load portfolio-data.json — open this page via a local server (python3 -m http.server 8080), not by double-clicking the file.');
+    return;
+  }
+
+  renderMeta(data);
+  renderNav(data);
+  renderHero(data.hero);
+  renderAbout(data.about);
+  renderResearch(data.research, data.hero);
+  renderExperience(data.experience);
+  renderProjects(data.projects);
+  renderCertifications(data.certifications);
+  renderAwards(data.awards);
+  renderSkills(data.skills);
+  renderEducation(data.education);
+  renderOnlineWorks(data.onlineWorks);
+  renderLinks(data.links);
+  renderContact(data.contact);
+  renderFooter(data);
+
+  // Kick off typed text after data loads
+  PHRASES = data.hero.typedPhrases || [];
+  typeLoop();
+
+  // Scroll reveal — must run AFTER content is injected into DOM
+  if (typeof initScrollReveal === 'function') initScrollReveal();
+}
+
+// ── META ──
+function renderMeta(data) {
+  const h = data.hero;
+  document.getElementById('page-title').textContent = (h.name || 'Portfolio') + ' — Developer & Researcher';
+  document.getElementById('meta-desc').setAttribute('content', h.name + ' — ' + h.description);
+}
+
+// ── NAV ──
+function renderNav(data) {
+  const h = data.hero;
+  const logo = document.getElementById('nav-logo');
+  const initials = data.meta?.navInitials || (h.name ? h.name.split(' ').map(w=>w[0]).join('') : 'MH');
+  logo.innerHTML = initials[0] + '<span></span>' + (initials[1] || '');
+  const resumeUrl = h.resumeLink || '#';
+  document.getElementById('nav-resume').href = resumeUrl;
+  document.getElementById('mobile-resume').href = resumeUrl;
+}
+
+// ── HERO ──
+function renderHero(h) {
+  if (!h) return;
+  setText('hero-label', h.label);
+  setText('hero-name', h.name);
+  setText('hero-desc', h.description);
+  setText('hero-card-name', h.name);
+  setText('hero-card-role', h.cardRole || 'Developer · Researcher');
+
+  const avatar = document.getElementById('hero-avatar');
+  avatar.src = h.profilePhoto || 'assets/img/profile.jpg';
+  avatar.alt = h.name;
+
+  // Stats
+  const statsEl = document.getElementById('hero-stats');
+  statsEl.innerHTML = (h.stats || []).map(s => `
+    <div class="stat">
+      <div class="stat-num">${esc(s.num)}<span>${esc(s.suffix||'')}</span></div>
+      <div class="stat-label">${esc(s.label)}</div>
+    </div>`).join('');
+
+  // Badge chips
+  const badgeColors = ['badge-aws','badge-cloud','badge-ieee','badge-research'];
+  document.getElementById('hero-badges').innerHTML = (h.badges || []).map((b,i) =>
+    `<span class="badge ${badgeColors[i % badgeColors.length]}">${esc(b)}</span>`).join('');
+
+  // Socials
+  const socials = h.socials || {};
+  const socialItems = [
+    { key:'linkedin', icon:'fab fa-linkedin-in', label:'LinkedIn' },
+    { key:'github',   icon:'fab fa-github',      label:'GitHub'   },
+    { key:'email',    icon:'fas fa-envelope',     label:'Email', mailto:true },
+    { key:'scholar',  icon:'fas fa-graduation-cap', label:'Google Scholar' },
+    { key:'orcid',    icon:'fas fa-id-card',      label:'ORCID'   },
+  ];
+  document.getElementById('hero-socials').innerHTML = socialItems
+    .filter(s => socials[s.key])
+    .map(s => {
+      const href = s.mailto ? `mailto:${socials[s.key]}` : socials[s.key];
+      return `<a href="${esc(href)}" target="_blank" class="social-btn" aria-label="${s.label}"><i class="${s.icon}"></i></a>`;
+    }).join('');
+}
+
+// ── ABOUT ──
+function renderAbout(a) {
+  if (!a) return;
+  setText('about-bio1', a.bio1);
+  setText('about-bio2', a.bio2);
+
+  const d = a.details || {};
+  document.getElementById('about-details').innerHTML = `
+    ${d.birthday ? `<div class="detail-item"><span class="detail-label">Birthday</span><span class="detail-value">${esc(d.birthday)}</span></div>` : ''}
+    ${d.location ? `<div class="detail-item"><span class="detail-label">Location</span><span class="detail-value">${esc(d.location)}</span></div>` : ''}
+    ${d.email    ? `<div class="detail-item"><span class="detail-label">Email</span><span class="detail-value"><a href="mailto:${esc(d.email)}">${esc(d.email)}</a></span></div>` : ''}
+    ${d.phone    ? `<div class="detail-item"><span class="detail-label">Phone</span><span class="detail-value">${esc(d.phone)}</span></div>` : ''}
+    ${d.orcid    ? `<div class="detail-item"><span class="detail-label">ORCID</span><span class="detail-value"><a href="https://orcid.org/${esc(d.orcid)}" target="_blank">${esc(d.orcid)}</a></span></div>` : ''}
+    ${d.researchgate ? `<div class="detail-item"><span class="detail-label">ResearchGate</span><span class="detail-value"><a href="${esc(d.researchgate)}" target="_blank">View Profile</a></span></div>` : ''}
+  `;
+
+  const interestIcons = {
+    'Software Development':'fas fa-code','Cloud Computing':'fas fa-cloud',
+    'Virtual Reality':'fas fa-vr-cardboard','Game Designing':'fas fa-gamepad',
+    'Data Visualization':'fas fa-chart-line','Algorithms & AI':'fas fa-brain',
+    'Event Management':'fas fa-calendar-check','Cloud Applications':'fas fa-cloud-upload-alt'
+  };
+  document.getElementById('about-interests').innerHTML = (a.interests || Object.keys(interestIcons)).map(name => `
+    <div class="interest-item">
+      <div class="interest-icon"><i class="${interestIcons[name] || 'fas fa-star'}"></i></div>
+      <span class="interest-name">${esc(name)}</span>
+    </div>`).join('');
+}
+
+// ── RESEARCH ──
+function renderResearch(research, hero) {
+  document.getElementById('research-grid').innerHTML = (research || []).map(r => `
+    <div class="research-card">
+      <span class="research-badge"><i class="fas fa-file-alt"></i> IEEE Xplore · ${esc(r.year)}</span>
+      <h3>${esc(r.title)}</h3>
+      <a href="${esc(r.link)}" target="_blank" class="research-link">Read Paper <i class="fas fa-arrow-right"></i></a>
+    </div>`).join('');
+
+  const ieeeLink = hero?.socials?.ieeeProfile || 'https://ieeexplore.ieee.org/';
+  document.getElementById('ieee-profile-link').href = ieeeLink;
+}
+
+// ── EXPERIENCE ──
+function renderExperience(experience) {
+  document.getElementById('timeline').innerHTML = (experience || []).map(e => `
+    <div class="timeline-item">
+      <div class="timeline-dot"><i class="${esc(e.icon || 'fas fa-briefcase')}"></i></div>
+      <div class="timeline-content">
+        <div class="timeline-head">
+          <div class="timeline-org"><a href="${esc(e.orgLink || '#')}" target="_blank">${esc(e.org)}</a></div>
+          <span class="timeline-period">${esc(e.period)}</span>
+        </div>
+        <div class="timeline-role">${esc(e.role)}</div>
+        <ul>${(e.bullets || []).map(b => `<li>${esc(b)}</li>`).join('')}</ul>
+      </div>
+    </div>`).join('');
+}
+
+// ── PROJECTS ──
+function renderProjects(projects) {
+  document.getElementById('projects-grid').innerHTML = (projects || []).map(p => `
+    <div class="project-card">
+      <div class="project-img">
+        <img src="${esc(p.img)}" alt="${esc(p.title)}" loading="lazy" />
+      </div>
+      <div class="project-body">
+        <div class="project-tags">${(p.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+        <h3>${esc(p.title)}</h3>
+        <p class="project-desc">${esc(p.desc)}</p>
+        <a href="${esc(p.link)}" target="_blank" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>`).join('');
+}
+
+// ── CERTIFICATIONS ──
+function renderCertifications(certs) {
+  document.getElementById('cert-grid').innerHTML = (certs || []).map(c => `
+    <a href="${esc(c.link)}" target="_blank" class="cert-card">
+      <div class="cert-logo"><img src="${esc(c.img)}" alt="${esc(c.issuer)}" /></div>
+      <div class="cert-info">
+        <div class="cert-name">${esc(c.name)}</div>
+        <div class="cert-issuer">${esc(c.issuer)}</div>
+      </div>
+    </a>`).join('');
+}
+
+// ── AWARDS ──
+function renderAwards(awards) {
+  document.getElementById('awards-grid').innerHTML = (awards || []).map(a => `
+    <a href="${esc(a.link)}" target="_blank" class="award-card">
+      <div class="award-icon">${a.icon}</div>
+      <div class="award-title">${esc(a.title)}</div>
+    </a>`).join('');
+}
+
+// ── SKILLS ──
+function renderSkills(skills) {
+  document.getElementById('skills-grid').innerHTML = (skills || []).map(cat => `
+    <div class="skill-category">
+      <h3>${esc(cat.category)}</h3>
+      <div class="skill-items">
+        ${(cat.items || []).map(item => `
+          <div class="skill-chip">
+            ${item.icon ? `<img src="${esc(item.icon)}" alt="${esc(item.name)}" />` : ''}
+            ${esc(item.name)}
+          </div>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+// ── EDUCATION ──
+function renderEducation(edu) {
+  if (!edu) return;
+  document.getElementById('edu-card').innerHTML = `
+    <div class="edu-logo">
+      <img src="${esc(edu.logoImg || 'assets/img/education/srm.png')}" alt="${esc(edu.institution)}" />
+    </div>
+    <div class="edu-info">
+      <h3><a href="${esc(edu.institutionLink || '#')}" target="_blank" style="color:inherit;text-decoration:none;">${esc(edu.institution)}</a></h3>
+      <div class="edu-degree">${esc(edu.degree)}</div>
+      <div class="edu-period">${esc(edu.period)}</div>
+      <div class="edu-courses">
+        ${(edu.courses || []).map(c => `<span class="tag">${esc(c)}</span>`).join('')}
+      </div>
+    </div>`;
+}
+
+// ── ONLINE WORKS ──
+function renderOnlineWorks(works) {
+  document.getElementById('online-grid').innerHTML = (works || []).map(w => `
+    <a href="${esc(w.link)}" target="_blank" class="online-card">
+      <div class="online-logo"><img src="${esc(w.img)}" alt="${esc(w.type)}" /></div>
+      <div class="online-info">
+        <h4>${esc(w.title)}</h4>
+        <div class="online-type">${esc(w.type)}</div>
+      </div>
+    </a>`).join('');
+}
+
+// ── LINKS ──
+function renderLinks(links) {
+  document.getElementById('links-grid').innerHTML = (links || []).map(l => `
+    <a href="${esc(l.url)}" target="_blank" class="link-card">
+      <div class="link-icon"><i class="${esc(l.icon)}"></i></div>
+      <div>
+        <h4>${esc(l.title)}</h4>
+        <div class="link-desc">${esc(l.desc)}</div>
+      </div>
+    </a>`).join('');
+}
+
+// ── CONTACT ──
+function renderContact(c) {
+  if (!c) return;
+  setText('contact-intro', c.intro);
+  document.getElementById('contact-items').innerHTML = `
+    ${c.location ? `<div class="contact-item"><div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div><div class="contact-item-text"><span class="contact-item-label">Location</span><span class="contact-item-value">${esc(c.location)}</span></div></div>` : ''}
+    ${c.email    ? `<div class="contact-item"><div class="contact-item-icon"><i class="fas fa-envelope"></i></div><div class="contact-item-text"><span class="contact-item-label">Primary Email</span><span class="contact-item-value"><a href="mailto:${esc(c.email)}">${esc(c.email)}</a></span></div></div>` : ''}
+    ${c.altEmail ? `<div class="contact-item"><div class="contact-item-icon"><i class="fas fa-envelope-open"></i></div><div class="contact-item-text"><span class="contact-item-label">Alt Email</span><span class="contact-item-value"><a href="mailto:${esc(c.altEmail)}">${esc(c.altEmail)}</a></span></div></div>` : ''}
+    ${c.phone    ? `<div class="contact-item"><div class="contact-item-icon"><i class="fas fa-phone"></i></div><div class="contact-item-text"><span class="contact-item-label">Phone</span><span class="contact-item-value">${esc(c.phone)}</span></div></div>` : ''}
+    ${c.linkedin ? `<div class="contact-item"><div class="contact-item-icon"><i class="fab fa-linkedin-in"></i></div><div class="contact-item-text"><span class="contact-item-label">LinkedIn</span><span class="contact-item-value"><a href="${esc(c.linkedin)}" target="_blank">${esc(c.linkedin.replace('https://www.','').replace('https://',''))}</a></span></div></div>` : ''}
+  `;
+}
+
+// ── FOOTER ──
+function renderFooter(data) {
+  const h = data.hero || {};
+  const meta = data.meta || {};
+  const initials = meta.navInitials || (h.name ? h.name.split(' ').map(w=>w[0]).join('') : 'MH');
+  document.getElementById('footer-brand').innerHTML = initials[0] + '<span></span>' + (initials[1] || '');
+
+  const year = meta.copyrightYear || new Date().getFullYear();
+  const name = h.name || '';
+  document.getElementById('footer-copy').textContent = `© ${year} ${name}. All rights reserved.`;
+
+  const socials = h.socials || {};
+  document.getElementById('footer-socials').innerHTML = [
+    socials.linkedin ? `<a href="${esc(socials.linkedin)}" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>` : '',
+    socials.github   ? `<a href="${esc(socials.github)}" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>` : '',
+    socials.email    ? `<a href="mailto:${esc(socials.email)}" class="social-btn"><i class="fas fa-envelope"></i></a>` : '',
+  ].join('');
+}
+
+// ── CONTACT FORM ──
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const name    = document.getElementById('name').value;
+  const email   = document.getElementById('email').value;
+  const subject = document.getElementById('subject').value || 'Portfolio Contact';
+  const message = document.getElementById('message').value;
+  window.location.href = `mailto:madheshh.official@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+}
+
+// ── UTILS ──
+function setText(id, val) { const el = document.getElementById(id); if (el) el.textContent = val || ''; }
+function esc(s) {
+  const d = document.createElement('div');
+  d.textContent = String(s || '');
+  return d.innerHTML;
+}
+
+// ── TYPED TEXT ──
+let phraseIndex = 0, charIndex = 0, isDeleting = false;
+function typeLoop() {
+  if (!PHRASES.length) return;
+  const el = document.getElementById('typed-text');
+  if (!el) return;
+  const current = PHRASES[phraseIndex];
+  if (isDeleting) {
+    el.textContent = current.substring(0, charIndex--);
+    if (charIndex < 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % PHRASES.length; setTimeout(typeLoop, 500); return; }
+  } else {
+    el.textContent = current.substring(0, charIndex++);
+    if (charIndex > current.length) { isDeleting = true; setTimeout(typeLoop, 1800); return; }
+  }
+  setTimeout(typeLoop, isDeleting ? 60 : 100);
+}
+
+// Boot — wait for DOM before rendering
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPortfolio);
+} else {
+  initPortfolio();
+}
+</script>
 </body>
 </html>
