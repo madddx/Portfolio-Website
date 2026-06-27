@@ -1,0 +1,511 @@
+{
+  "hero": {
+    "name": "Madhesh H",
+    "label": "Based in Chennai, India",
+    "description": "Focused and enthusiastic developer with a keen interest in software development and cloud technology. Published researcher with multiple IEEE papers. Building things that matter.",
+    "profilePhoto": "assets/img/profile.jpg",
+    "cardRole": "Developer · Researcher",
+    "resumeLink": "https://drive.google.com/file/d/1HKhJ5_yHlJepoMQEomijM1JlhXFPa7E8/view?usp=sharing",
+    "typedPhrases": [
+      "Software Developer",
+      "Cloud Engineer",
+      "Researcher",
+      "IoT Enthusiast",
+      "Tech Innovator"
+    ],
+    "stats": [
+      {
+        "num": "5",
+        "suffix": "",
+        "label": "IEEE Papers"
+      },
+      {
+        "num": "9",
+        "suffix": "",
+        "label": "Certifications"
+      },
+      {
+        "num": "100",
+        "suffix": "+",
+        "label": "Cloud Labs"
+      },
+      {
+        "num": "500",
+        "suffix": "+",
+        "label": "Programs Solved"
+      }
+    ],
+    "badges": [
+      "AWS Certified",
+      "Google Cloud",
+      "IEEE GRSS",
+      "5x+ IEEE Author"
+    ],
+    "socials": {
+      "linkedin": "https://www.linkedin.com/in/madheshh",
+      "github": "https://www.github.com/madddx",
+      "email": "madheshh.official@gmail.com",
+      "scholar": "https://scholar.google.com/citations?user=IX36AoYAAAAJ&hl=en",
+      "orcid": "https://orcid.org/0009-0003-8768-6008",
+      "ieeeProfile": "https://ieeexplore.ieee.org/author/985533095720725"
+    }
+  },
+  "about": {
+    "bio1": "I'm a B.Tech Computer Science Engineering student at SRM University, Chennai. My passion lies at the intersection of software development, cloud computing, and research — building systems that solve real-world problems with elegant engineering.",
+    "bio2": "As the Ex-Chairperson of the IEEE GRSS Chapter at SRMIST, I've had the privilege of leading technical events, mentoring peers, and fostering a culture of innovation. My work spans from IoT systems and cloud architectures to game development and missile guidance simulations.",
+    "interests": [
+      "Software Development",
+      "Cloud Computing",
+      "Virtual Reality",
+      "Game Designing",
+      "Data Visualization",
+      "Algorithms & AI",
+      "Event Management",
+      "Cloud Applications"
+    ],
+    "details": {
+      "birthday": "09 July 2005",
+      "location": "Chennai, India",
+      "email": "madheshh.official@gmail.com",
+      "phone": "+91 98409 12915",
+      "orcid": "0009-0003-8768-6008",
+      "researchgate": "https://www.researchgate.net/profile/Madhesh-H-2"
+    }
+  },
+  "research": [
+    {
+      "year": "2024",
+      "title": "Decentralized Cloud Systems: A Novel Framework for IoT Scalability and Security",
+      "link": "https://ieeexplore.ieee.org/document/11170709"
+    },
+    {
+      "year": "2024",
+      "title": "Deep Learning-Based Rainfall Prediction for Coastal Cities: A Case Study of Chennai",
+      "link": "https://ieeexplore.ieee.org/document/10984540"
+    },
+    {
+      "year": "2024",
+      "title": "A Scalable and Secure Cloud Solution for File Management with AWS and EC2",
+      "link": "https://ieeexplore.ieee.org/document/10985586"
+    }
+  ],
+  "experience": [
+    {
+      "org": "IEEE GRSS — SRMIST",
+      "orgLink": "https://ieee-grss-srmist.vercel.app/",
+      "role": "Chair Person",
+      "period": "Jan 2025 — Apr 2026",
+      "icon": "fas fa-users",
+      "bullets": [
+        "Led multiple technical events including workshops, hackathons, industry visits, and research conferences with a diverse audience of students and professionals.",
+        "Spearheaded initiatives to promote research in geoscience and remote sensing, fostering collaboration between academia and industry.",
+        "Recognized for leadership and contributions to the chapter's growth and impact within the university community."
+      ]
+    },
+    {
+      "org": "Google Cloud Skills",
+      "orgLink": "https://www.linkedin.com/posts/madheshh_googlecloud-cloudchampion-techinnovation-activity-7312386385095626752-Yviy",
+      "role": "Cohort Member · Champion",
+      "period": "Jul 2024 — Dec 2025",
+      "icon": "fab fa-google",
+      "bullets": [
+        "Earned recognition for mastering cloud solutions including security, DevOps, AI/ML, and cloud-native applications.",
+        "Successfully completed 100+ hands-on labs and certifications across various cloud technologies.",
+        "Awarded Google Cloud Champion Milestone swags for outstanding dedication and continuous learning."
+      ]
+    },
+    {
+      "org": "CINTEL Association — SRMIST",
+      "orgLink": "https://www.srmist.edu.in/department/department-of-computational-intelligence/cintel-student-association/",
+      "role": "Technical & PR Member",
+      "period": "Aug 2024 — Mar 2025",
+      "icon": "fas fa-laptop-code",
+      "bullets": [
+        "Received a Letter of Appreciation for contributions and dedication to events conducted between Aug 2024 and Jan 2025.",
+        "Coordinated with external organizations for joint events and hackathons, expanding the club's network."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "img": "assets/img/project/Aws proj.jpeg",
+      "tags": [
+        "AWS",
+        "Cloud",
+        "EC2"
+      ],
+      "title": "AWS File Management System",
+      "desc": "A scalable and secure cloud-based file management solution leveraging AWS and EC2. Published as an IEEE paper on secure cloud architectures.",
+      "link": "https://github.com/madddx/CRMCloudPush/blob/main/README.md"
+    },
+    {
+      "img": "assets/img/project/HyperTrack.jpg",
+      "tags": [
+        "Python",
+        "Simulation",
+        "Algorithms"
+      ],
+      "title": "HyperTrack Missile Guidance System",
+      "desc": "An autonomous missile guidance simulation implementing hyper-tracking algorithms for precision targeting and real-time trajectory correction.",
+      "link": "https://github.com/madddx/DRDO-Dare-To-Dream-5.0/blob/main/README.md"
+    },
+    {
+      "img": "assets/img/project/2D Game in Unity Engine.jpg",
+      "tags": [
+        "Unity",
+        "C#",
+        "Game Dev"
+      ],
+      "title": "2D Dodge It — Unity Engine",
+      "desc": "An engaging 2D dodge-style game built in Unity Engine. Demonstrates physics, game logic, and interactive level design concepts.",
+      "link": "https://github.com/madddx/2D-Game-Dodge-It/blob/main/README.md"
+    },
+    {
+      "img": "assets/img/project/Personal_Server.jpg",
+      "tags": [
+        "IoT",
+        "NodeMCU",
+        "ESP8266"
+      ],
+      "title": "Secure Server with NodeMCU & SD Module",
+      "desc": "A personal IoT server built using NodeMCU ESP8266 and SD module, enabling secure local file storage and wireless data access.",
+      "link": "https://github.com/madddx/Personal-Server/blob/main/README.md"
+    },
+    {
+      "img": "assets/img/project/Decentralized and Distributed Cloud Systems.jpg",
+      "tags": [
+        "Cloud",
+        "IoT",
+        "Security"
+      ],
+      "title": "Decentralized & Distributed Cloud Systems",
+      "desc": "A novel framework for IoT scalability and security using decentralized cloud systems. IEEE published research project.",
+      "link": "https://github.com/madddx/House-To-House-Server-Systems/blob/main/README.md"
+    },
+    {
+      "img": "assets/img/project/ARAMC.png",
+      "tags": [
+        "Robotics",
+        "IoT",
+        "Autonomous"
+      ],
+      "title": "ARAMC: Autonomous Rover — Dual Controls",
+      "desc": "An autonomous rover with both automatic and manual control modes. Implements computer vision and manual override capabilities.",
+      "link": "https://github.com/madddx/ARAMC-Autonomous-Rover-with-Automatic-and-Manual-Controls/blob/main/README.md"
+    },
+    {
+      "img": "assets/img/project/Optimized and Secure Personal Cloud Storage.jpg",
+      "tags": [
+        "Cloud",
+        "Security",
+        "Storage"
+      ],
+      "title": "Optimized & Secure Personal Cloud Storage",
+      "desc": "A personal cloud storage platform with end-to-end encryption, optimized bandwidth utilization, and multi-device sync support.",
+      "link": "https://github.com/madddx/Arduino-ESP8266-SD-Card-File-Transfer-System/blob/main/README.md"
+    },
+    {
+      "img": "assets/img/project/Mathematical Indexes For Compounds.jpg",
+      "tags": [
+        "Python",
+        "Math",
+        "Analysis"
+      ],
+      "title": "Mathematical Indexes for Compounds",
+      "desc": "A computational tool for calculating mathematical indexes and topological descriptors for chemical compounds and molecular structures.",
+      "link": "https://github.com/madddx/MathematicalIndexesForCompounds/blob/main_python/README.md"
+    }
+  ],
+  "certifications": [
+    {
+      "img": "assets/img/certification/solution architect.png",
+      "name": "AWS Certified Solution Architect",
+      "issuer": "Amazon Web Services",
+      "link": "Certifications/AWS_Certified_Solution_Architect_Associate.html"
+    },
+    {
+      "img": "assets/img/certification/cloud practitioner.png",
+      "name": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services",
+      "link": "Certifications/AWS_Certified_Cloud_Practitioner.html"
+    },
+    {
+      "img": "assets/img/certification/AI Practitioner.png",
+      "name": "AWS Certified AI Practitioner",
+      "issuer": "Amazon Web Services",
+      "link": "Certifications/AWS_Certified_AI_Practitioner.html"
+    },
+    {
+      "img": "assets/img/certification/Salesforce_Agentforce_Specialist.png",
+      "name": "Salesforce Agentforce Specialist",
+      "issuer": "Salesforce",
+      "link": "Certifications/Salesforce_Agentforce_Specialist.html"
+    },
+    {
+      "img": "assets/img/certification/github-foundations.png",
+      "name": "GitHub Foundations Certification",
+      "issuer": "GitHub",
+      "link": "Certifications/Github_Foundation.html"
+    },
+    {
+      "img": "assets/img/certification/fortinet-certified-associate-cybersecurity.png",
+      "name": "Certified Associate in Cybersecurity",
+      "issuer": "Fortinet",
+      "link": "Certifications/Certified_Associate_in_Cybersecurity.html"
+    },
+    {
+      "img": "assets/img/certification/google-cloud-computing-foundations-certificate.png",
+      "name": "Google Cloud Computing Foundations",
+      "issuer": "Google Cloud",
+      "link": "Certifications/Google_Cloud_Computing_Certificate.html"
+    },
+    {
+      "img": "assets/img/certification/cisco-networking-basics.png",
+      "name": "Cisco Networking Basics",
+      "issuer": "Cisco",
+      "link": "Certifications/Cisco-Networking-Basics.html"
+    },
+    {
+      "img": "assets/img/certification/alteryx-foundational-micro-credential.png",
+      "name": "Alteryx Foundational Micro Credential",
+      "issuer": "Alteryx",
+      "link": "Certifications/Alteryx-Foundational-Micro-Credential.html"
+    }
+  ],
+  "awards": [
+    {
+      "icon": "🏆",
+      "title": "Java Expo'24 — Winner",
+      "link": "https://www.linkedin.com/posts/madheshh_javaexpo2024-bestprojectaward-srmist-activity-7444112320450191360-TerI"
+    },
+    {
+      "icon": "🥇",
+      "title": "Sense Actuate'25 — Best Project",
+      "link": "https://www.linkedin.com/posts/madheshh_iot-smartsystems-srmist-activity-7326984265081016321-cJJO"
+    },
+    {
+      "icon": "🎨",
+      "title": "Creative Ingenuity'24 — 2nd Runner up",
+      "link": "https://www.linkedin.com/posts/madheshh_engineeringgraphics-autocad-mechanicalengineering-activity-7208869672073457664-Oyny"
+    },
+    {
+      "icon": "☁️",
+      "title": "Google Cloud Champion Milestone",
+      "link": "https://www.linkedin.com/posts/madheshh_googlecloud-cloudjourney-techgrowth-activity-7401895943089917952-pmOp"
+    },
+    {
+      "icon": "💡",
+      "title": "Hack For Humanity — 1st Runner Up",
+      "link": "https://drive.google.com/file/d/1gZeLD8ltKWPb-cc-vFJuq7hIYcfNB5yo/view?usp=drive_link"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Languages",
+      "items": [
+        {
+          "name": "Python",
+          "icon": "https://www.vectorlogo.zone/logos/python/python-icon.svg"
+        },
+        {
+          "name": "Java",
+          "icon": "https://www.vectorlogo.zone/logos/java/java-icon.svg"
+        },
+        {
+          "name": "C",
+          "icon": "https://www.vectorlogo.zone/logos/open-std_c/open-std_c-icon~alt.svg"
+        },
+        {
+          "name": "MySQL",
+          "icon": "https://www.vectorlogo.zone/logos/mysql/mysql-icon.svg"
+        }
+      ]
+    },
+    {
+      "category": "Cloud & DevOps",
+      "items": [
+        {
+          "name": "AWS",
+          "icon": "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg"
+        },
+        {
+          "name": "Google Cloud",
+          "icon": "https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg"
+        },
+        {
+          "name": "EC2 / S3",
+          "icon": ""
+        },
+        {
+          "name": "Cloud IAM",
+          "icon": ""
+        },
+        {
+          "name": "DevOps",
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "category": "Tools & Other",
+      "items": [
+        {
+          "name": "Unity 3D",
+          "icon": "https://www.vectorlogo.zone/logos/unity3d/unity3d-icon.svg"
+        },
+        {
+          "name": "Event Mgmt",
+          "icon": ""
+        },
+        {
+          "name": "Data Analysis",
+          "icon": ""
+        },
+        {
+          "name": "Presentations",
+          "icon": ""
+        },
+        {
+          "name": "IoT / ESP8266",
+          "icon": ""
+        },
+        {
+          "name": "Deep Learning",
+          "icon": ""
+        }
+      ]
+    }
+  ],
+  "education": {
+    "institution": "SRM Institute of Science & Technology",
+    "institutionLink": "https://www.srmist.edu.in/",
+    "degree": "B.Tech — Computer Science Engineering",
+    "period": "August 2023 — Present",
+    "logoImg": "assets/img/education/srm.png",
+    "courses": [
+      "Data Structures & Algorithms",
+      "Object Oriented Programming",
+      "Software Development",
+      "Cloud Computing"
+    ]
+  },
+  "onlineWorks": [
+    {
+      "img": "assets/img/education/google.png",
+      "title": "Data Analytics",
+      "type": "Google · Coursera",
+      "link": "https://www.coursera.org/account/accomplishments/professional-cert/DQDTR4W3T8AX"
+    },
+    {
+      "img": "assets/img/education/qwik.png",
+      "title": "Skill Badges",
+      "type": "Google Cloud Skills Boost",
+      "link": "https://www.cloudskillsboost.google/public_profiles/5ba25793-b3fa-457a-91f3-508e068e59b4"
+    },
+    {
+      "img": "assets/img/education/tcs.png",
+      "title": "Cyber Security",
+      "type": "TCS iON",
+      "link": "https://drive.google.com/file/d/1HQQrB8aM7sNodXCQOHiSfZEgdXAQOUm7/view?usp=drive_link"
+    },
+    {
+      "img": "assets/img/education/srmf.png",
+      "title": "eLab C Programming",
+      "type": "SRMIST",
+      "link": "https://drive.google.com/file/d/1oy3ZgVpM-zvksLGyb0Bfy4EpAvCKfvXX/view?usp=drive_link"
+    },
+    {
+      "img": "assets/img/education/mindler.png",
+      "title": "Certification of Internship",
+      "type": "Mindler",
+      "link": "https://drive.google.com/file/d/11uS4MKqvz7Xb7qxknybl9l62zqj0LVXt/view?usp=drive_link"
+    }
+  ],
+  "links": [
+    {
+      "icon": "fas fa-flask",
+      "title": "ResearchGate",
+      "desc": "Published research works",
+      "url": "https://www.researchgate.net/profile/Madhesh-H-2"
+    },
+    {
+      "icon": "fas fa-satellite",
+      "title": "IEEE Xplore",
+      "desc": "IEEE author profile",
+      "url": "https://ieeexplore.ieee.org/author/985533095720725"
+    },
+    {
+      "icon": "fas fa-id-badge",
+      "title": "ORCID",
+      "desc": "Persistent researcher ID",
+      "url": "https://orcid.org/0009-0003-8768-6008"
+    },
+    {
+      "icon": "fas fa-graduation-cap",
+      "title": "Google Scholar",
+      "desc": "Citations & publications",
+      "url": "https://scholar.google.com/citations?user=IX36AoYAAAAJ&hl=en"
+    },
+    {
+      "icon": "fas fa-file-pdf",
+      "title": "Resume",
+      "desc": "Download my resume",
+      "url": "https://drive.google.com/file/d/1HKhJ5_yHlJepoMQEomijM1JlhXFPa7E8/view?usp=drive_link"
+    },
+    {
+      "icon": "fab fa-github",
+      "title": "GitHub",
+      "desc": "My repositories",
+      "url": "https://github.com/madddx"
+    },
+    {
+      "icon": "fab fa-linkedin-in",
+      "title": "LinkedIn",
+      "desc": "Connect with me",
+      "url": "https://www.linkedin.com/in/madheshh/"
+    },
+    {
+      "icon": "fab fa-google",
+      "title": "GCloud Profile",
+      "desc": "Cloud credentials",
+      "url": "https://www.cloudskillsboost.google/public_profiles/5ba25793-b3fa-457a-91f3-508e068e59b4"
+    },
+    {
+      "icon": "fas fa-certificate",
+      "title": "Credly Badges",
+      "desc": "Verified credentials",
+      "url": "https://www.credly.com/users/madhesh-h.8fc2401d"
+    },
+    {
+      "icon": "fas fa-code",
+      "title": "LeetCode",
+      "desc": "Problem solving & DSA",
+      "url": "https://leetcode.com/u/Madddx/"
+    },
+    {
+      "icon": "fas fa-terminal",
+      "title": "HackerRank",
+      "desc": "Coding challenges",
+      "url": "https://www.hackerrank.com/profile/madhesh090725"
+    },
+    {
+      "icon": "fas fa-folder-open",
+      "title": "Certificate Folder",
+      "desc": "All my certifications",
+      "url": "https://drive.google.com/drive/folders/15cmgVdl4du2Z8yE8Y-lIpzmBgjYFMEuk"
+    }
+  ],
+  "contact": {
+    "intro": "I'm always open to discussing new projects, interesting ideas, research collaborations, or opportunities to be part of exciting work. Drop me a message!",
+    "location": "Chennai, Tamil Nadu, India",
+    "email": "madheshh.official@gmail.com",
+    "altEmail": "madhesh090725@gmail.com",
+    "phone": "+91 98409 12915",
+    "linkedin": "https://www.linkedin.com/in/madheshh"
+  },
+  "meta": {
+    "navInitials": "MH",
+    "copyrightYear": "2025",
+    "ieeeProfileUrl": "https://ieeexplore.ieee.org/author/985533095720725"
+  }
+}
