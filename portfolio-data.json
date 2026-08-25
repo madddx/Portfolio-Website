@@ -128,17 +128,6 @@
   ],
   "projects": [
     {
-      "img": "assets/img/project/Aws proj.jpeg",
-      "tags": [
-        "AWS",
-        "Cloud",
-        "EC2"
-      ],
-      "title": "AWS File Management System",
-      "desc": "A scalable and secure cloud-based file management solution leveraging AWS and EC2. Published as an IEEE paper on secure cloud architectures.",
-      "link": "https://github.com/madddx/CRMCloudPush/blob/main/README.md"
-    },
-    {
       "img": "assets/img/project/HyperTrack.jpg",
       "tags": [
         "Python",
@@ -150,37 +139,15 @@
       "link": "https://github.com/madddx/DRDO-Dare-To-Dream-5.0/blob/main/README.md"
     },
     {
-      "img": "assets/img/project/2D Game in Unity Engine.jpg",
+      "img": "assets/img/project/Mathematical Indexes For Compounds.jpg",
       "tags": [
-        "Unity",
-        "C#",
-        "Game Dev"
+        "Python",
+        "Math",
+        "Analysis"
       ],
-      "title": "2D Dodge It — Unity Engine",
-      "desc": "An engaging 2D dodge-style game built in Unity Engine. Demonstrates physics, game logic, and interactive level design concepts.",
-      "link": "https://github.com/madddx/2D-Game-Dodge-It/blob/main/README.md"
-    },
-    {
-      "img": "assets/img/project/Personal_Server.jpg",
-      "tags": [
-        "IoT",
-        "NodeMCU",
-        "ESP8266"
-      ],
-      "title": "Secure Server with NodeMCU & SD Module",
-      "desc": "A personal IoT server built using NodeMCU ESP8266 and SD module, enabling secure local file storage and wireless data access.",
-      "link": "https://github.com/madddx/Personal-Server/blob/main/README.md"
-    },
-    {
-      "img": "assets/img/project/Decentralized and Distributed Cloud Systems.jpg",
-      "tags": [
-        "Cloud",
-        "IoT",
-        "Security"
-      ],
-      "title": "Decentralized & Distributed Cloud Systems",
-      "desc": "A novel framework for IoT scalability and security using decentralized cloud systems. IEEE published research project.",
-      "link": "https://github.com/madddx/House-To-House-Server-Systems/blob/main/README.md"
+      "title": "Mathematical Indexes for Compounds",
+      "desc": "A computational tool for calculating mathematical indexes and topological descriptors for chemical compounds and molecular structures.",
+      "link": "https://github.com/madddx/MathematicalIndexesForCompounds/blob/main_python/README.md"
     },
     {
       "img": "assets/img/project/ARAMC.png",
@@ -194,6 +161,39 @@
       "link": "https://github.com/madddx/ARAMC-Autonomous-Rover-with-Automatic-and-Manual-Controls/blob/main/README.md"
     },
     {
+      "img": "assets/img/project/Decentralized and Distributed Cloud Systems.jpg",
+      "tags": [
+        "Cloud",
+        "IoT",
+        "Security"
+      ],
+      "title": "Decentralized & Distributed Cloud Systems",
+      "desc": "A novel framework for IoT scalability and security using decentralized cloud systems. IEEE published research project.",
+      "link": "https://github.com/madddx/House-To-House-Server-Systems/blob/main/README.md"
+    },
+    {
+      "img": "assets/img/project/Aws proj.jpeg",
+      "tags": [
+        "AWS",
+        "Cloud",
+        "EC2"
+      ],
+      "title": "AWS File Management System",
+      "desc": "A scalable and secure cloud-based file management solution leveraging AWS and EC2. Published as an IEEE paper on secure cloud architectures.",
+      "link": "https://github.com/madddx/CRMCloudPush/blob/main/README.md"
+    },
+    {
+      "img": "assets/img/project/Personal_Server.jpg",
+      "tags": [
+        "IoT",
+        "NodeMCU",
+        "ESP8266"
+      ],
+      "title": "Secure Server with NodeMCU & SD Module",
+      "desc": "A personal IoT server built using NodeMCU ESP8266 and SD module, enabling secure local file storage and wireless data access.",
+      "link": "https://github.com/madddx/Personal-Server/blob/main/README.md"
+    },
+    {
       "img": "assets/img/project/Optimized and Secure Personal Cloud Storage.jpg",
       "tags": [
         "Cloud",
@@ -205,18 +205,24 @@
       "link": "https://github.com/madddx/Arduino-ESP8266-SD-Card-File-Transfer-System/blob/main/README.md"
     },
     {
-      "img": "assets/img/project/Mathematical Indexes For Compounds.jpg",
+      "img": "assets/img/project/2D Game in Unity Engine.jpg",
       "tags": [
-        "Python",
-        "Math",
-        "Analysis"
+        "Unity",
+        "C#",
+        "Game Dev"
       ],
-      "title": "Mathematical Indexes for Compounds",
-      "desc": "A computational tool for calculating mathematical indexes and topological descriptors for chemical compounds and molecular structures.",
-      "link": "https://github.com/madddx/MathematicalIndexesForCompounds/blob/main_python/README.md"
+      "title": "2D Dodge It — Unity Engine",
+      "desc": "An engaging 2D dodge-style game built in Unity Engine. Demonstrates physics, game logic, and interactive level design concepts.",
+      "link": "https://github.com/madddx/2D-Game-Dodge-It/blob/main/README.md"
     }
   ],
   "certifications": [
+    {
+      "img": "assets/img/certification/ML_ENG.png",
+      "name": "AWS Certified Machine Learning Engineer",
+      "issuer": "Amazon Web Services",
+      "link": "Certifications/ML_ENG.html"
+    },
     {
       "img": "assets/img/certification/solution architect.png",
       "name": "AWS Certified Solution Architect",
@@ -224,16 +230,16 @@
       "link": "Certifications/AWS_Certified_Solution_Architect_Associate.html"
     },
     {
-      "img": "assets/img/certification/cloud practitioner.png",
-      "name": "AWS Certified Cloud Practitioner",
-      "issuer": "Amazon Web Services",
-      "link": "Certifications/AWS_Certified_Cloud_Practitioner.html"
-    },
-    {
       "img": "assets/img/certification/AI Practitioner.png",
       "name": "AWS Certified AI Practitioner",
       "issuer": "Amazon Web Services",
       "link": "Certifications/AWS_Certified_AI_Practitioner.html"
+    },
+    {
+      "img": "assets/img/certification/cloud practitioner.png",
+      "name": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services",
+      "link": "Certifications/AWS_Certified_Cloud_Practitioner.html"
     },
     {
       "img": "assets/img/certification/Salesforce_Agentforce_Specialist.png",
@@ -279,9 +285,9 @@
       "link": "https://www.linkedin.com/posts/madheshh_javaexpo2024-bestprojectaward-srmist-activity-7444112320450191360-TerI"
     },
     {
-      "icon": "🥇",
-      "title": "Sense Actuate'25 — Best Project",
-      "link": "https://www.linkedin.com/posts/madheshh_iot-smartsystems-srmist-activity-7326984265081016321-cJJO"
+      "icon": "💡",
+      "title": "Hack For Humanity — 1st Runner Up",
+      "link": "https://drive.google.com/file/d/1gZeLD8ltKWPb-cc-vFJuq7hIYcfNB5yo/view?usp=drive_link"
     },
     {
       "icon": "🎨",
@@ -289,14 +295,14 @@
       "link": "https://www.linkedin.com/posts/madheshh_engineeringgraphics-autocad-mechanicalengineering-activity-7208869672073457664-Oyny"
     },
     {
+      "icon": "🥇",
+      "title": "Sense Actuate'25 — Best Project",
+      "link": "https://www.linkedin.com/posts/madheshh_iot-smartsystems-srmist-activity-7326984265081016321-cJJO"
+    },
+    {
       "icon": "☁️",
       "title": "Google Cloud Champion Milestone",
       "link": "https://www.linkedin.com/posts/madheshh_googlecloud-cloudjourney-techgrowth-activity-7401895943089917952-pmOp"
-    },
-    {
-      "icon": "💡",
-      "title": "Hack For Humanity — 1st Runner Up",
-      "link": "https://drive.google.com/file/d/1gZeLD8ltKWPb-cc-vFJuq7hIYcfNB5yo/view?usp=drive_link"
     }
   ],
   "skills": [
@@ -305,19 +311,19 @@
       "items": [
         {
           "name": "Python",
-          "icon": "https://www.vectorlogo.zone/logos/python/python-icon.svg"
+          "icon": "https://api.iconify.design/simple-icons:python.svg?color=white"
         },
         {
           "name": "Java",
-          "icon": "https://www.vectorlogo.zone/logos/java/java-icon.svg"
+          "icon": "https://api.iconify.design/simple-icons:openjdk.svg?color=white"
         },
         {
           "name": "C",
-          "icon": "https://www.vectorlogo.zone/logos/open-std_c/open-std_c-icon~alt.svg"
+          "icon": "https://api.iconify.design/simple-icons:c.svg?color=white"
         },
         {
           "name": "MySQL",
-          "icon": "https://www.vectorlogo.zone/logos/mysql/mysql-icon.svg"
+          "icon": "https://api.iconify.design/simple-icons:mysql.svg?color=white"
         }
       ]
     },
@@ -326,23 +332,23 @@
       "items": [
         {
           "name": "AWS",
-          "icon": "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg"
+          "icon": "https://api.iconify.design/simple-icons:amazonaws.svg?color=white"
         },
         {
           "name": "Google Cloud",
-          "icon": "https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg"
+          "icon": "https://api.iconify.design/simple-icons:googlecloud.svg?color=white"
         },
         {
           "name": "EC2 / S3",
-          "icon": ""
+          "icon": "https://api.iconify.design/simple-icons:googlecloud.svg?color=white"
         },
         {
           "name": "Cloud IAM",
-          "icon": ""
+          "icon": "https://api.iconify.design/simple-icons:amazoniam.svg?color=white"
         },
         {
           "name": "DevOps",
-          "icon": ""
+          "icon": "https://api.iconify.design/mdi:infinity.svg?color=white"
         }
       ]
     },
@@ -351,27 +357,27 @@
       "items": [
         {
           "name": "Unity 3D",
-          "icon": "https://www.vectorlogo.zone/logos/unity3d/unity3d-icon.svg"
+          "icon": "https://api.iconify.design/simple-icons:unity.svg?color=white"
         },
         {
-          "name": "Event Mgmt",
-          "icon": ""
+          "name": "Event Management",
+          "icon": "https://api.iconify.design/fa6-solid:calendar-check.svg?color=white"
         },
         {
           "name": "Data Analysis",
-          "icon": ""
+          "icon": "https://api.iconify.design/fa6-solid:chart-line.svg?color=white"
         },
         {
           "name": "Presentations",
-          "icon": ""
+          "icon": "https://api.iconify.design/simple-icons:microsoftpowerpoint.svg?color=white"
         },
         {
           "name": "IoT / ESP8266",
-          "icon": ""
+          "icon": "https://api.iconify.design/simple-icons:espressif.svg?color=white"
         },
         {
           "name": "Deep Learning",
-          "icon": ""
+          "icon": "https://api.iconify.design/simple-icons:tensorflow.svg?color=white"
         }
       ]
     }
