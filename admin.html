@@ -78,6 +78,12 @@
     .skill-row input { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 7px 11px; border-radius: 8px; font-size: .83rem; font-family: 'DM Sans', sans-serif; flex: 1; transition: border-color .15s; }
     .skill-row input:focus { outline: none; border-color: var(--accent); }
     .import-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 14px; font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--text2); white-space: pre-wrap; word-break: break-all; max-height: 280px; overflow-y: auto; }
+    .drag-handle { cursor: grab; color: var(--text2); font-size: .9rem; padding: 4px 6px; margin-left: -6px; border-radius: 5px; transition: color .15s, background .15s; }
+    .drag-handle:hover { color: var(--accent); background: rgba(124,111,255,.1); }
+    .drag-handle:active { cursor: grabbing; }
+    .item { transition: background .15s, border-color .15s; }
+    .item.dragging { opacity: .4; border: 1px dashed var(--accent); }
+    .item.drag-target-line { box-shadow: 0 -2px 0 0 var(--accent); }
   </style>
 </head>
 <body>
@@ -382,56 +388,59 @@ function renderPhrases(arr) {
   const el = document.getElementById('phrases-list'); el.innerHTML = '';
   arr.forEach((p,i) => {
     const d=document.createElement('div');
+    d.className='item';
+    d.draggable=true;
     d.style.cssText='display:flex;gap:8px;align-items:center;margin-bottom:8px';
-    d.innerHTML=`<div class="card-num">${i+1}</div><input style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:.875rem;font-family:'DM Sans',sans-serif" class="phrase-in" value="${q(p)}"/><button class="btn btn-danger btn-icon" onclick="this.closest('div').remove()"><i class="fas fa-trash"></i></button>`;
+    d.innerHTML=`<i class="fas fa-grip-vertical drag-handle"></i><div class="card-num">${i+1}</div><input style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:.875rem;font-family:'DM Sans',sans-serif" class="phrase-in" value="${q(p)}"/><button class="btn btn-danger btn-icon" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button>`;
     el.appendChild(d);
   });
 }
-function addPhrase(){const el=document.getElementById('phrases-list');const n=el.querySelectorAll('.phrase-in').length+1;const d=document.createElement('div');d.style.cssText='display:flex;gap:8px;align-items:center;margin-bottom:8px';d.innerHTML=`<div class="card-num">${n}</div><input style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:.875rem;font-family:'DM Sans',sans-serif" class="phrase-in" placeholder="e.g. Machine Learning Engineer"/><button class="btn btn-danger btn-icon" onclick="this.closest('div').remove()"><i class="fas fa-trash"></i></button>`;el.appendChild(d);d.querySelector('input').focus();}
+function addPhrase(){const el=document.getElementById('phrases-list');const n=el.querySelectorAll('.phrase-in').length+1;const d=document.createElement('div');d.className='item';d.draggable=true;d.style.cssText='display:flex;gap:8px;align-items:center;margin-bottom:8px';d.innerHTML=`<i class="fas fa-grip-vertical drag-handle"></i><div class="card-num">${n}</div><input style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:.875rem;font-family:'DM Sans',sans-serif" class="phrase-in" placeholder="e.g. Machine Learning Engineer"/><button class="btn btn-danger btn-icon" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button>`;el.appendChild(d);d.querySelector('input').focus();}
 
 // ─── STATS ───
 function renderStats(arr) {
   const el=document.getElementById('stats-list'); el.innerHTML='';
   const g=document.createElement('div'); g.style.cssText='display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px';
-  arr.forEach((s,i)=>{const c=document.createElement('div');c.className='card';c.innerHTML=`<div style="font-size:.72rem;color:var(--text2);margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Stat ${i+1}</div><div style="display:flex;gap:8px"><div class="field" style="flex:1"><label>Number</label><input data-s="num" value="${q(s.num||'')}" style="text-align:center;font-weight:700"/></div><div class="field" style="width:58px"><label>Suffix</label><input data-s="sfx" value="${q(s.suffix||'')}"/></div></div><div class="field" style="margin-top:8px"><label>Label</label><input data-s="lbl" value="${q(s.label||'')}"/></div>`;g.appendChild(c);});
+  arr.forEach((s,i)=>{const c=document.createElement('div');c.className='card item';c.draggable=true;c.innerHTML=`<div style="display:flex;align-items:center;gap:4px;margin-bottom:8px"><i class="fas fa-grip-vertical drag-handle"></i><div class="stat-label" style="font-size:.72rem;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.06em">Stat ${i+1}</div></div><div style="display:flex;gap:8px"><div class="field" style="flex:1"><label>Number</label><input data-s="num" value="${q(s.num||'')}" style="text-align:center;font-weight:700"/></div><div class="field" style="width:58px"><label>Suffix</label><input data-s="sfx" value="${q(s.suffix||'')}"/></div></div><div class="field" style="margin-top:8px"><label>Label</label><input data-s="lbl" value="${q(s.label||'')}"/></div>`;g.appendChild(c);});
   el.appendChild(g);
+  enableDragReorder(g, '.item', ()=>renumberCards(g, '.item', '.stat-label', i=>`Stat ${i+1}`));
 }
 
 // ─── BADGES PREVIEW ───
 function previewBadges(){const tags=(document.getElementById('h-badges')?.value||'').split(',').map(s=>s.trim()).filter(Boolean);document.getElementById('badges-preview').innerHTML=tags.map(t=>`<span class="bp">${q(t)}</span>`).join('');}
 
 // ─── RESEARCH ───
-function makeResearch(r,i){const c=document.createElement('div');c.className='card item';c.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><div class="card-num">${i+1}</div><span class="card-title">${q(r.title||'New Paper')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Year</label><input data-f="year" value="${q(r.year||'2024')}"/></div><div class="field"><label>IEEE Link</label><input data-f="link" value="${q(r.link||'')}"/></div></div><div class="field" style="margin-top:12px"><label>Paper Title</label><input data-f="title" value="${q(r.title||'')}"/></div>`;return c;}
+function makeResearch(r,i){const c=document.createElement('div');c.className='card item';c.draggable=true;c.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><i class="fas fa-grip-vertical drag-handle"></i><div class="card-num">${i+1}</div><span class="card-title">${q(r.title||'New Paper')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Year</label><input data-f="year" value="${q(r.year||'2024')}"/></div><div class="field"><label>IEEE Link</label><input data-f="link" value="${q(r.link||'')}"/></div></div><div class="field" style="margin-top:12px"><label>Paper Title</label><input data-f="title" value="${q(r.title||'')}"/></div>`;return c;}
 function addResearch(){const el=document.getElementById('research-list');el.appendChild(makeResearch({},el.querySelectorAll('.item').length));}
 
 // ─── EXPERIENCE ───
-function makeExp(e,i){const c=document.createElement('div');c.className='card item';const bh=(e.bullets||['']).map(b=>`<div class="bullet-item"><textarea data-b rows="2">${q(b)}</textarea><button class="bdel" onclick="this.closest('.bullet-item').remove()"><i class="fas fa-minus-circle"></i></button></div>`).join('');c.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><div class="card-num">${i+1}</div><span class="card-title">${q(e.org||'New Role')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Organization</label><input data-f="org" value="${q(e.org||'')}"/></div><div class="field"><label>Org Website</label><input data-f="orgLink" value="${q(e.orgLink||'')}"/></div><div class="field"><label>Role / Title</label><input data-f="role" value="${q(e.role||'')}"/></div><div class="field"><label>Period</label><input data-f="period" value="${q(e.period||'')}"/></div><div class="field"><label>Icon Class</label><input data-f="icon" value="${q(e.icon||'fas fa-briefcase')}"/><span class="field-hint">FontAwesome e.g. fab fa-google</span></div></div><div style="margin-top:12px"><label style="font-size:.76rem;font-weight:500;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:8px">Bullet Points</label><div class="bc">${bh}</div><button class="add-btn" style="margin-top:4px" onclick="addBullet(this)"><i class="fas fa-plus"></i> Add bullet</button></div>`;return c;}
+function makeExp(e,i){const c=document.createElement('div');c.className='card item';c.draggable=true;const bh=(e.bullets||['']).map(b=>`<div class="bullet-item"><textarea data-b rows="2">${q(b)}</textarea><button class="bdel" onclick="this.closest('.bullet-item').remove()"><i class="fas fa-minus-circle"></i></button></div>`).join('');c.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><i class="fas fa-grip-vertical drag-handle"></i><div class="card-num">${i+1}</div><span class="card-title">${q(e.org||'New Role')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Organization</label><input data-f="org" value="${q(e.org||'')}"/></div><div class="field"><label>Org Website</label><input data-f="orgLink" value="${q(e.orgLink||'')}"/></div><div class="field"><label>Role / Title</label><input data-f="role" value="${q(e.role||'')}"/></div><div class="field"><label>Period</label><input data-f="period" value="${q(e.period||'')}"/></div><div class="field"><label>Icon Class</label><input data-f="icon" value="${q(e.icon||'fas fa-briefcase')}"/><span class="field-hint">FontAwesome e.g. fab fa-google</span></div></div><div style="margin-top:12px"><label style="font-size:.76rem;font-weight:500;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:8px">Bullet Points</label><div class="bc">${bh}</div><button class="add-btn" style="margin-top:4px" onclick="addBullet(this)"><i class="fas fa-plus"></i> Add bullet</button></div>`;return c;}
 function addExperience(){const el=document.getElementById('experience-list');el.appendChild(makeExp({bullets:['']},el.querySelectorAll('.item').length));}
 function addBullet(btn){const bc=btn.previousElementSibling;const d=document.createElement('div');d.className='bullet-item';d.innerHTML=`<textarea data-b rows="2"></textarea><button class="bdel" onclick="this.closest('.bullet-item').remove()"><i class="fas fa-minus-circle"></i></button>`;bc.appendChild(d);d.querySelector('textarea').focus();}
 
 // ─── PROJECTS ───
-function makeProject(p,i){const c=document.createElement('div');c.className='card item';c.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><div class="card-num">${i+1}</div><span class="card-title">${q(p.title||'New Project')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Title</label><input data-f="title" value="${q(p.title||'')}"/></div><div class="field"><label>Image Path</label><input data-f="img" value="${q(p.img||'')}" placeholder="assets/img/project/..."/></div><div class="field"><label>Tags (comma-separated)</label><input data-f="tags" value="${q((p.tags||[]).join(', '))}"/></div><div class="field"><label>GitHub / Details Link</label><input data-f="link" value="${q(p.link||'')}"/></div></div><div class="field" style="margin-top:12px"><label>Description</label><textarea data-f="desc" rows="3">${q(p.desc||'')}</textarea></div>`;return c;}
+function makeProject(p,i){const c=document.createElement('div');c.className='card item';c.draggable=true;c.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><i class="fas fa-grip-vertical drag-handle"></i><div class="card-num">${i+1}</div><span class="card-title">${q(p.title||'New Project')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Title</label><input data-f="title" value="${q(p.title||'')}"/></div><div class="field"><label>Image Path</label><input data-f="img" value="${q(p.img||'')}" placeholder="assets/img/project/..."/></div><div class="field"><label>Tags (comma-separated)</label><input data-f="tags" value="${q((p.tags||[]).join(', '))}"/></div><div class="field"><label>GitHub / Details Link</label><input data-f="link" value="${q(p.link||'')}"/></div></div><div class="field" style="margin-top:12px"><label>Description</label><textarea data-f="desc" rows="3">${q(p.desc||'')}</textarea></div>`;return c;}
 function addProject(){const el=document.getElementById('projects-list');el.appendChild(makeProject({},el.querySelectorAll('.item').length));}
 
 // ─── CERTIFICATIONS ───
-function makeCert(c,i){const d=document.createElement('div');d.className='card item';d.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><div class="card-num">${i+1}</div><span class="card-title">${q(c.name||'New Cert')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Certificate Name</label><input data-f="name" value="${q(c.name||'')}"/></div><div class="field"><label>Issuer</label><input data-f="issuer" value="${q(c.issuer||'')}"/></div><div class="field"><label>Badge Image Path</label><input data-f="img" value="${q(c.img||'')}" placeholder="assets/img/certification/..."/></div><div class="field"><label>Link / Page</label><input data-f="link" value="${q(c.link||'')}"/></div></div>`;return d;}
+function makeCert(c,i){const d=document.createElement('div');d.className='card item';d.draggable=true;d.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><i class="fas fa-grip-vertical drag-handle"></i><div class="card-num">${i+1}</div><span class="card-title">${q(c.name||'New Cert')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Certificate Name</label><input data-f="name" value="${q(c.name||'')}"/></div><div class="field"><label>Issuer</label><input data-f="issuer" value="${q(c.issuer||'')}"/></div><div class="field"><label>Badge Image Path</label><input data-f="img" value="${q(c.img||'')}" placeholder="assets/img/certification/..."/></div><div class="field"><label>Link / Page</label><input data-f="link" value="${q(c.link||'')}"/></div></div>`;return d;}
 function addCert(){const el=document.getElementById('cert-list');el.appendChild(makeCert({},el.querySelectorAll('.item').length));}
 
 // ─── AWARDS ───
-function makeAward(a,i){const d=document.createElement('div');d.className='card item';d.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><div class="card-num">${i+1}</div><span class="card-title">${q(a.title||'New Award')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g3"><div class="field"><label>Emoji / Icon</label><input data-f="icon" value="${q(a.icon||'🏆')}" style="font-size:1.1rem"/></div><div class="field"><label>Award Title</label><input data-f="title" value="${q(a.title||'')}"/></div><div class="field"><label>Link</label><input data-f="link" value="${q(a.link||'')}"/></div></div>`;return d;}
+function makeAward(a,i){const d=document.createElement('div');d.className='card item';d.draggable=true;d.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><i class="fas fa-grip-vertical drag-handle"></i><div class="card-num">${i+1}</div><span class="card-title">${q(a.title||'New Award')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g3"><div class="field"><label>Emoji / Icon</label><input data-f="icon" value="${q(a.icon||'🏆')}" style="font-size:1.1rem"/></div><div class="field"><label>Award Title</label><input data-f="title" value="${q(a.title||'')}"/></div><div class="field"><label>Link</label><input data-f="link" value="${q(a.link||'')}"/></div></div>`;return d;}
 function addAward(){const el=document.getElementById('awards-list');el.appendChild(makeAward({},el.querySelectorAll('.item').length));}
 
 // ─── SKILLS ───
-function makeSkillCat(s,i){const d=document.createElement('div');d.className='card item';const ih=(s.items||[]).map(it=>`<div class="skill-row"><input data-sn value="${q(it.name||'')}" placeholder="Skill name"/><input data-si value="${q(it.icon||'')}" placeholder="Icon URL (optional)" style="flex:1.5"/><button class="btn btn-danger btn-icon" onclick="this.closest('.skill-row').remove()"><i class="fas fa-times"></i></button></div>`).join('');d.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><div class="card-num">${i+1}</div><span class="card-title">${q(s.category||'New Category')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="field" style="margin-bottom:12px"><label>Category Name</label><input data-f="category" value="${q(s.category||'')}"/></div><div style="font-size:.76rem;font-weight:500;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Skills</div><div class="sc">${ih}</div><button class="add-btn" style="margin-top:4px" onclick="addSkillItem(this)"><i class="fas fa-plus"></i> Add skill</button>`;return d;}
+function makeSkillCat(s,i){const d=document.createElement('div');d.className='card item';d.draggable=true;const ih=(s.items||[]).map(it=>`<div class="skill-row"><input data-sn value="${q(it.name||'')}" placeholder="Skill name"/><input data-si value="${q(it.icon||'')}" placeholder="Icon URL (optional)" style="flex:1.5"/><button class="btn btn-danger btn-icon" onclick="this.closest('.skill-row').remove()"><i class="fas fa-times"></i></button></div>`).join('');d.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><i class="fas fa-grip-vertical drag-handle"></i><div class="card-num">${i+1}</div><span class="card-title">${q(s.category||'New Category')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="field" style="margin-bottom:12px"><label>Category Name</label><input data-f="category" value="${q(s.category||'')}"/></div><div style="font-size:.76rem;font-weight:500;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Skills</div><div class="sc">${ih}</div><button class="add-btn" style="margin-top:4px" onclick="addSkillItem(this)"><i class="fas fa-plus"></i> Add skill</button>`;return d;}
 function addSkillCat(){const el=document.getElementById('skills-list');el.appendChild(makeSkillCat({items:[]},el.querySelectorAll('.item').length));}
 function addSkillItem(btn){const sc=btn.previousElementSibling;const d=document.createElement('div');d.className='skill-row';d.innerHTML=`<input data-sn placeholder="Skill name"/><input data-si placeholder="Icon URL (optional)" style="flex:1.5"/><button class="btn btn-danger btn-icon" onclick="this.closest('.skill-row').remove()"><i class="fas fa-times"></i></button>`;sc.appendChild(d);d.querySelector('[data-sn]').focus();}
 
 // ─── ONLINE WORKS ───
-function makeOnline(o,i){const d=document.createElement('div');d.className='card item';d.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><div class="card-num">${i+1}</div><span class="card-title">${q(o.title||'New Entry')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Title</label><input data-f="title" value="${q(o.title||'')}"/></div><div class="field"><label>Platform</label><input data-f="type" value="${q(o.type||'')}" placeholder="Google · Coursera"/></div><div class="field"><label>Logo Image Path</label><input data-f="img" value="${q(o.img||'')}" placeholder="assets/img/education/..."/></div><div class="field"><label>Certificate / Profile Link</label><input data-f="link" value="${q(o.link||'')}"/></div></div>`;return d;}
+function makeOnline(o,i){const d=document.createElement('div');d.className='card item';d.draggable=true;d.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><i class="fas fa-grip-vertical drag-handle"></i><div class="card-num">${i+1}</div><span class="card-title">${q(o.title||'New Entry')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Title</label><input data-f="title" value="${q(o.title||'')}"/></div><div class="field"><label>Platform</label><input data-f="type" value="${q(o.type||'')}" placeholder="Google · Coursera"/></div><div class="field"><label>Logo Image Path</label><input data-f="img" value="${q(o.img||'')}" placeholder="assets/img/education/..."/></div><div class="field"><label>Certificate / Profile Link</label><input data-f="link" value="${q(o.link||'')}"/></div></div>`;return d;}
 function addOnline(){const el=document.getElementById('online-list');el.appendChild(makeOnline({},el.querySelectorAll('.item').length));}
 
 // ─── LINKS ───
-function makeLink(l,i){const d=document.createElement('div');d.className='card item';d.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><div class="card-num">${i+1}</div><span class="card-title">${q(l.title||'New Link')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Title</label><input data-f="title" value="${q(l.title||'')}"/></div><div class="field"><label>Icon Class</label><input data-f="icon" value="${q(l.icon||'fas fa-link')}"/><span class="field-hint">FontAwesome e.g. fab fa-github</span></div><div class="field"><label>Description</label><input data-f="desc" value="${q(l.desc||'')}"/></div><div class="field"><label>URL</label><input data-f="url" value="${q(l.url||'')}"/></div></div>`;return d;}
+function makeLink(l,i){const d=document.createElement('div');d.className='card item';d.draggable=true;d.innerHTML=`<div class="card-header"><div style="display:flex;align-items:center;gap:8px"><i class="fas fa-grip-vertical drag-handle"></i><div class="card-num">${i+1}</div><span class="card-title">${q(l.title||'New Link')}</span></div><button class="btn btn-danger btn-sm" onclick="this.closest('.item').remove()"><i class="fas fa-trash"></i></button></div><div class="form-grid g2"><div class="field"><label>Title</label><input data-f="title" value="${q(l.title||'')}"/></div><div class="field"><label>Icon Class</label><input data-f="icon" value="${q(l.icon||'fas fa-link')}"/><span class="field-hint">FontAwesome e.g. fab fa-github</span></div><div class="field"><label>Description</label><input data-f="desc" value="${q(l.desc||'')}"/></div><div class="field"><label>URL</label><input data-f="url" value="${q(l.url||'')}"/></div></div>`;return d;}
 function addLink(){const el=document.getElementById('links-list');el.appendChild(makeLink({},el.querySelectorAll('.item').length));}
 
 // ─── COLLECT ALL DATA ───
@@ -497,6 +506,63 @@ function gv(id){const el=document.getElementById(id);return el?el.value:'';}
 function sv(id,val){const el=document.getElementById(id);if(el)el.value=val||'';}
 function q(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function toast(msg, type='success'){const t=document.getElementById('toast');t.className='show '+type;t.innerHTML=`<i class="fas fa-${type==='success'?'check-circle':'exclamation-circle'}"></i> ${msg}`;clearTimeout(t._t);t._t=setTimeout(()=>{t.className=''},4200);}
+
+// ─── DRAG & DROP REORDERING (works across every repeatable section) ───
+function enableDragReorder(container, itemSelector, afterReorder) {
+  if (!container || container.__dragEnabled) return;
+  container.__dragEnabled = true;
+  let dragEl = null;
+  container.addEventListener('dragstart', e => {
+    const item = e.target.closest(itemSelector);
+    if (!item || item.parentElement !== container) { e.preventDefault(); return; }
+    dragEl = item;
+    item.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    try { e.dataTransfer.setData('text/plain', ''); } catch (err) {}
+  });
+  container.addEventListener('dragover', e => {
+    if (!dragEl) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    const after = getDragAfterElement(container, itemSelector, e.clientY);
+    if (after == null) { if (container.lastElementChild !== dragEl) container.appendChild(dragEl); }
+    else if (after !== dragEl) container.insertBefore(dragEl, after);
+  });
+  container.addEventListener('drop', e => e.preventDefault());
+  container.addEventListener('dragend', () => {
+    if (dragEl) dragEl.classList.remove('dragging');
+    dragEl = null;
+    if (afterReorder) afterReorder();
+  });
+}
+function getDragAfterElement(container, itemSelector, y) {
+  const items = [...container.querySelectorAll(itemSelector)].filter(el => !el.classList.contains('dragging'));
+  let closest = { offset: -Infinity, element: null };
+  for (const child of items) {
+    const box = child.getBoundingClientRect();
+    const offset = y - box.top - box.height / 2;
+    if (offset < 0 && offset > closest.offset) closest = { offset, element: child };
+  }
+  return closest.element;
+}
+function renumberCards(container, itemSelector, labelSelector, formatFn) {
+  labelSelector = labelSelector || '.card-num';
+  formatFn = formatFn || (i => String(i + 1));
+  [...container.children].forEach((child, i) => {
+    if (itemSelector && !child.matches(itemSelector)) return;
+    const label = child.querySelector(labelSelector);
+    if (label) label.textContent = formatFn(i);
+  });
+}
+function initDragReorder() {
+  ['research-list','experience-list','projects-list','cert-list','awards-list','skills-list','online-list','links-list'].forEach(id => {
+    const el = document.getElementById(id);
+    enableDragReorder(el, '.item', () => renumberCards(el, '.item'));
+  });
+  const phrasesEl = document.getElementById('phrases-list');
+  enableDragReorder(phrasesEl, '.item', () => renumberCards(phrasesEl, '.item'));
+}
+initDragReorder();
 
 loadData();
 </script>
