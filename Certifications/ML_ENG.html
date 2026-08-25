@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AWS Certified Machine Learning Engineer</title>
+  <meta name="description" content="AWS Certified Machine Learning Engineer certification details" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Shared portfolio styles -->
+  <link rel="stylesheet" href="../styles.css" />
+  <!-- Cert-page-only styles (brand colour overrides + page-specific layout) -->
+  <link rel="stylesheet" href="../cert-styles.css" />
+  <style>
+    /* AWS brand colour overrides */
+    :root {
+      --brand: #0a06f8;
+      --brand-dim: rgba(51, 31, 184, 0.12);
+      --brand-border: rgba(0,124,195,0.3);
+    }
+    .hero-grid-bg {
+      background-image:
+        linear-gradient(rgba(0,124,195,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,124,195,0.025) 1px, transparent 1px);
+    }
+    .hero-glow-brand {
+      background: radial-gradient(circle, rgba(0,124,195,0.07) 0%, transparent 70%);
+    }
+    .btn-primary { background: var(--brand); box-shadow: 0 0 24px rgba(0,124,195,0.3); }
+    .btn-primary:hover { background: #0096e8; box-shadow: 0 0 40px rgba(0,124,195,0.5); color: #fff; }
+    .cert-card::before { background: linear-gradient(90deg, var(--brand), #00c8ff, transparent); }
+    .validity-fill { background: linear-gradient(90deg, var(--brand), #00c8ff); }
+    .verify-box::before { background: linear-gradient(90deg, var(--brand), var(--accent3), transparent); }
+    .domain-card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,124,195,0.08); }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="../index.html" class="nav-logo">M<span></span>H</a>
+    <a href="../index.html#certifications" class="nav-back">
+      <i class="fas fa-arrow-left"></i> Back to Portfolio
+    </a>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <div class="cert-hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow-brand"></div>
+    <div class="hero-glow-blue"></div>
+
+    <div class="cert-hero-inner">
+      <!-- LEFT -->
+      <div class="cert-left">
+        <p class="cert-label">Certification</p>
+        <h1 class="cert-title">AWS Certified<br><em>Machine Learning Engineer</em></h1>
+        <p class="cert-subtitle">
+           Validating advanced expertise in designing, deploying, and optimizing secure, scalable, fault-tolerant, and high-performance machine learning solutions using AWS AI/ML services, MLOps practices, and cloud architecture best practices.
+        </p>
+
+        <div class="cert-meta-row">
+          <div class="meta-item">
+            <span class="meta-label">Issued By</span>
+            <span class="meta-value">AWS</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Issue Date</span>
+            <span class="meta-value">Aug 2026</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Status</span>
+            <span class="meta-value active">Active</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Level</span>
+            <span class="meta-value">Associate</span>
+          </div>
+        </div>
+
+        <div class="cert-btns">
+          <a href="https://aws.amazon.com/verification" target="_blank" class="btn-primary">
+            <i class="fas fa-shield-check"></i> Verify
+          </a>
+          <a href="../index.html#certifications" class="btn-ghost">
+            <i class="fas fa-th-large"></i> All Certifications
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT CARD -->
+      <div class="cert-card">
+        <div class="cert-card-badge">
+          <img src="../assets/img/certification/ML_ENG.png" alt="AWS" style="width:56px;height:56px;object-fit:contain;" />
+        </div>
+        <h3>AWS Certified Machine Learning Engineer</h3>
+        <p class="card-issuer">AWS</p>
+
+        <div class="cert-tags">
+          <span class="tag tag-brand">AWS</span>
+          <span class="tag tag-accent">ML Services</span>
+          <span class="tag tag-green">MLOps & Deployment</span>
+          <span class="tag tag-cloud">Monitoring & Optimization</span>
+        </div>
+
+        <div class="cert-validity">
+          <div class="validity-label">Validity Period</div>
+          <div class="validity-row">
+            <div>
+              <div class="validity-label">Issued</div>
+              <div class="validity-date">Aug 2026</div>
+            </div>
+            <div class="validity-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div>
+              <div class="validity-label">Expiration</div>
+              <div class="validity-date">Aug 2029</div>
+            </div>
+          </div>
+          <div class="validity-bar">
+            <div class="validity-fill" style="width: 100%;">
+            </div>
+          </div>
+        </div>
+
+        <div class="cert-id">
+          <div>
+            <div class="cert-id-label">Credential ID</div>
+            <div class="cert-id-value" id="cert-id-text">0a9622c42e63475fa6bf86fd272b47a3</div>
+          </div>
+          <button class="copy-btn" onclick="copyId()" id="copy-btn" title="Copy ID">
+            <i class="fas fa-copy"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">Overview</p>
+      <h2>About This <em>Certification</em></h2>
+
+
+      <div class="about-cols">
+        <div class="about-text reveal">
+            <p>
+            I am building advanced expertise in <b>AWS Machine Learning</b>, focusing on designing, deploying, and optimizing scalable machine learning solutions using Amazon Web Services (AWS). My learning journey has strengthened my understanding of cloud-based machine learning, data pipelines, model deployment, and MLOps practices.
+            </p>
+            <p>
+            Through hands-on learning, I have developed knowledge of AWS AI/ML services, scalable infrastructure, model training and deployment workflows, and monitoring strategies. I focus on building reliable ML systems that meet performance, security, and operational requirements.
+            </p>
+        </div>
+
+        <div class="about-text reveal">
+            <p>
+            My AWS ML expertise includes selecting appropriate cloud services for machine learning workloads, designing fault-tolerant architectures, and applying best practices for model scalability, monitoring, and optimization. I am also developing strong foundations in automating ML workflows through modern MLOps approaches.
+            </p>
+            <p>
+            This specialization reflects my commitment to combining <b>machine learning and cloud engineering</b> to build intelligent, scalable, and production-ready solutions. My goal is to design AWS-based ML systems that transform data into reliable insights and real-world business value.
+            </p>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- ── DOMAINS ── -->
+  <!-- ── CERTIFICATION DOMAINS ── -->
+  <section id="domains">
+  <div class="section-inner">
+    <p class="section-label">Certification Domains</p>
+    <h2>AWS Machine Learning Engineer <em>Knowledge Areas</em></h2>
+
+    <div class="domains-grid">
+
+      <div class="domain-card reveal">
+        <div class="domain-icon"><i class="fas fa-database"></i></div>
+        <span class="domain-weight">Domain 1</span>
+        <h3>Data Preparation for ML</h3>
+        <p>
+          Preparing, transforming, and validating datasets for machine learning
+          workloads using AWS data services, feature engineering techniques,
+          and scalable data processing pipelines.
+        </p>
+      </div>
+
+      <div class="domain-card reveal">
+        <div class="domain-icon"><i class="fas fa-brain"></i></div>
+        <span class="domain-weight">Domain 2</span>
+        <h3>Model Development</h3>
+        <p>
+          Developing and training machine learning models using appropriate
+          algorithms, frameworks, AWS AI/ML services, and techniques for
+          improving model accuracy and performance.
+        </p>
+      </div>
+
+      <div class="domain-card reveal">
+        <div class="domain-icon"><i class="fas fa-rocket"></i></div>
+        <span class="domain-weight">Domain 3</span>
+        <h3>Model Deployment &amp; Orchestration</h3>
+        <p>
+          Deploying machine learning models into production with scalable
+          inference infrastructure, automated workflows, CI/CD pipelines,
+          and reliable MLOps practices.
+        </p>
+      </div>
+
+      <div class="domain-card reveal">
+        <div class="domain-icon"><i class="fas fa-chart-line"></i></div>
+        <span class="domain-weight">Domain 4</span>
+        <h3>ML Model Monitoring &amp; Maintenance</h3>
+        <p>
+          Monitoring model performance, data quality, drift, infrastructure
+          health, and operational metrics while continuously improving
+          production machine learning systems.
+        </p>
+      </div>
+
+      <div class="domain-card reveal">
+        <div class="domain-icon"><i class="fas fa-shield-alt"></i></div>
+        <span class="domain-weight">Domain 5</span>
+        <h3>Secure &amp; Scalable ML Solutions</h3>
+        <p>
+          Designing secure, reliable, and cost-effective ML architectures using
+          AWS best practices, identity and access management, encryption,
+          scalability, and responsible resource optimisation.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-label">Technical Competencies</p>
+    <h2>Skills <em>Validated</em></h2>
+
+    <div class="skills-grid">
+
+      <div class="skill-category reveal">
+        <h3>AWS Machine Learning</h3>
+        <div class="skill-items">
+          <span class="skill-chip"><i class="fas fa-brain"></i> Amazon SageMaker</span>
+          <span class="skill-chip"><i class="fas fa-robot"></i> Amazon Bedrock</span>
+          <span class="skill-chip"><i class="fas fa-eye"></i> Amazon Rekognition</span>
+          <span class="skill-chip"><i class="fas fa-language"></i> Amazon Comprehend</span>
+          <span class="skill-chip"><i class="fas fa-microphone"></i> Amazon Transcribe</span>
+          <span class="skill-chip"><i class="fas fa-comments"></i> Amazon Polly</span>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <h3>ML Development &amp; MLOps</h3>
+        <div class="skill-items">
+          <span class="skill-chip"><i class="fas fa-database"></i> Data Preparation</span>
+          <span class="skill-chip"><i class="fas fa-cogs"></i> Feature Engineering</span>
+          <span class="skill-chip"><i class="fas fa-brain"></i> Model Training</span>
+          <span class="skill-chip"><i class="fas fa-rocket"></i> Model Deployment</span>
+          <span class="skill-chip"><i class="fas fa-sync"></i> ML Pipelines</span>
+          <span class="skill-chip"><i class="fas fa-code-branch"></i> CI/CD for ML</span>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <h3>Monitoring &amp; Optimisation</h3>
+        <div class="skill-items">
+          <span class="skill-chip"><i class="fas fa-chart-area"></i> Model Monitoring</span>
+          <span class="skill-chip"><i class="fas fa-search"></i> Model Evaluation</span>
+          <span class="skill-chip"><i class="fas fa-exchange-alt"></i> Data Drift</span>
+          <span class="skill-chip"><i class="fas fa-server"></i> Scalable Inference</span>
+          <span class="skill-chip"><i class="fas fa-coins"></i> ML Cost Optimisation</span>
+          <span class="skill-chip"><i class="fas fa-shield-alt"></i> ML Security</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+  <!-- ── VERIFICATION ── -->
+  <section id="verify">
+    <div class="section-inner">
+      <p class="section-label">Authenticity</p>
+      <h2>Verify <em>Credential</em></h2>
+
+      <div class="verify-box reveal">
+        <p>
+          This certification is officially issued by AWS and can be independently verified on Credly as well as the AWS Certification website. The badge below uniquely identifies this achievement and links to the verified credential.
+        </p>
+
+        <div class="verify-details">
+          <div class="detail-item">
+            <span class="detail-label">Certified Name</span>
+            <span class="detail-value">Madhesh H</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Certification</span>
+            <span class="detail-value">AWS Certified Machine Learning Engineer</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Issued By</span>
+            <span class="detail-value">AWS</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Level</span>
+            <span class="detail-value">Associate</span>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label"> AWS Certification Platform</span>
+            <span class="detail-value">
+              <a href="https://aws.amazon.com/verification" target="_blank">aws.amazon.com/verification <i class="fas fa-external-link-alt" style="font-size:0.7rem"></i></a>
+            </span>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label">validation number</span>
+            <span class="detail-value">0a9622c42e63475fa6bf86fd272b47a3</span>
+          </div>
+        </div>
+
+        <a href="https://www.credly.com/badges/ca8c6b55-ab42-4305-b408-d9283d1aec19/public_url" target="_blank" class="btn-primary">
+          <i class="fas fa-shield-check"></i> Verify on Credly
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">M<span></span>H</div>
+      <span class="footer-copy">© 2025 Madhesh H. All rights reserved.</span>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/madheshh" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.github.com/madddx" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
+        <a href="mailto:madheshh.official@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Copy ID
+    function copyId() {
+      const text = document.getElementById('cert-id-text').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.classList.add('copied');
+        btn.innerHTML = '<i class="fas fa-check"></i>';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.innerHTML = '<i class="fas fa-copy"></i>';
+        }, 2000);
+      });
+    }
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
