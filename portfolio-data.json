@@ -44,6 +44,7 @@
     "socials": {
       "linkedin": "https://www.linkedin.com/in/madheshh",
       "github": "https://www.github.com/madddx",
+      "instagram": "https://www.instagram.com/madheshness?vrfl=amhxNmhqN2k0aDlk",
       "email": "madheshh.official@gmail.com",
       "scholar": "https://scholar.google.com/citations?user=IX36AoYAAAAJ&hl=en",
       "orcid": "https://orcid.org/0009-0003-8768-6008",
@@ -69,7 +70,8 @@
       "email": "madheshh.official@gmail.com",
       "phone": "+91 98409 12915",
       "orcid": "0009-0003-8768-6008",
-      "researchgate": "https://www.researchgate.net/profile/Madhesh-H-2"
+      "researchgate": "https://www.researchgate.net/profile/Madhesh-H-2",
+      "instagram": "https://www.instagram.com/madheshness?vrfl=amhxNmhqN2k0aDlk"
     }
   },
   "research": [
@@ -499,6 +501,12 @@
       "title": "Certificate Folder",
       "desc": "All my certifications",
       "url": "https://drive.google.com/drive/folders/15cmgVdl4du2Z8yE8Y-lIpzmBgjYFMEuk"
+    },
+    {
+      "icon": "fab fa-instagram",
+      "title": "Instagram",
+      "desc": "My Instagram",
+      "url": "https://www.instagram.com/madheshness?vrfl=amhxNmhqN2k0aDlk"
     }
   ],
   "contact": {
@@ -507,7 +515,8 @@
     "email": "madheshh.official@gmail.com",
     "altEmail": "madhesh090725@gmail.com",
     "phone": "+91 98409 12915",
-    "linkedin": "https://www.linkedin.com/in/madheshh"
+    "linkedin": "https://www.linkedin.com/in/madheshh",
+    "instagram": "https://www.instagram.com/madheshness?vrfl=amhxNmhqN2k0aDlk"
   },
   "meta": {
     "navInitials": "MH",
