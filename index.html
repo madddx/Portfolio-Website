@@ -328,6 +328,7 @@ function renderHero(h) {
     { key:'email',    icon:'fas fa-envelope',     label:'Email', mailto:true },
     { key:'scholar',  icon:'fas fa-graduation-cap', label:'Google Scholar' },
     { key:'orcid',    icon:'fas fa-id-card',      label:'ORCID'   },
+    { key:'instagram', icon:'fab fa-instagram',   label:'Instagram' },
   ];
   document.getElementById('hero-socials').innerHTML = socialItems
     .filter(s => socials[s.key])
@@ -351,6 +352,7 @@ function renderAbout(a) {
     ${d.phone    ? `<div class="detail-item"><span class="detail-label">Phone</span><span class="detail-value">${esc(d.phone)}</span></div>` : ''}
     ${d.orcid    ? `<div class="detail-item"><span class="detail-label">ORCID</span><span class="detail-value"><a href="https://orcid.org/${esc(d.orcid)}" target="_blank">${esc(d.orcid)}</a></span></div>` : ''}
     ${d.researchgate ? `<div class="detail-item"><span class="detail-label">ResearchGate</span><span class="detail-value"><a href="${esc(d.researchgate)}" target="_blank">View Profile</a></span></div>` : ''}
+    ${d.instagram ? `<div class="detail-item"><span class="detail-label">Instagram</span><span class="detail-value"><a href="${esc(d.instagram)}" target="_blank" rel="noopener">@${esc(d.instagram.replace(/\/$/,'').split('/').pop().split('?')[0])}</a></span></div>` : ''}
   `;
 
   const interestIcons = {
@@ -498,6 +500,7 @@ function renderContact(c) {
     ${c.altEmail ? `<div class="contact-item"><div class="contact-item-icon"><i class="fas fa-envelope-open"></i></div><div class="contact-item-text"><span class="contact-item-label">Alt Email</span><span class="contact-item-value"><a href="mailto:${esc(c.altEmail)}">${esc(c.altEmail)}</a></span></div></div>` : ''}
     ${c.phone    ? `<div class="contact-item"><div class="contact-item-icon"><i class="fas fa-phone"></i></div><div class="contact-item-text"><span class="contact-item-label">Phone</span><span class="contact-item-value">${esc(c.phone)}</span></div></div>` : ''}
     ${c.linkedin ? `<div class="contact-item"><div class="contact-item-icon"><i class="fab fa-linkedin-in"></i></div><div class="contact-item-text"><span class="contact-item-label">LinkedIn</span><span class="contact-item-value"><a href="${esc(c.linkedin)}" target="_blank">${esc(c.linkedin.replace('https://www.','').replace('https://',''))}</a></span></div></div>` : ''}
+    ${c.instagram ? `<div class="contact-item"><div class="contact-item-icon"><i class="fab fa-instagram"></i></div><div class="contact-item-text"><span class="contact-item-label">Instagram</span><span class="contact-item-value"><a href="${esc(c.instagram)}" target="_blank" rel="noopener">@${esc(c.instagram.replace(/\/$/,'').split('/').pop().split('?')[0])}</a></span></div></div>` : ''}
   `;
 }
 
@@ -516,6 +519,7 @@ function renderFooter(data) {
   document.getElementById('footer-socials').innerHTML = [
     socials.linkedin ? `<a href="${esc(socials.linkedin)}" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>` : '',
     socials.github   ? `<a href="${esc(socials.github)}" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>` : '',
+    socials.instagram ? `<a href="${esc(socials.instagram)}" target="_blank" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>` : '',
     socials.email    ? `<a href="mailto:${esc(socials.email)}" class="social-btn"><i class="fas fa-envelope"></i></a>` : '',
   ].join('');
 }
