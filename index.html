@@ -442,7 +442,7 @@ function renderSkills(skills) {
       <div class="skill-items">
         ${(cat.items || []).map(item => `
           <div class="skill-chip">
-            ${item.icon ? `<img src="${esc(item.icon)}" alt="${esc(item.name)}" />` : ''}
+            ${item.icon ? (/^(https?:|\/|assets\/)/.test(item.icon) ? `<img src="${esc(item.icon)}" alt="${esc(item.name)}" />` : `<i class="${esc(item.icon)}"></i>`) : ''}
             ${esc(item.name)}
           </div>`).join('')}
       </div>
