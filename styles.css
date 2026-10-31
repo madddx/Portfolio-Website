@@ -986,6 +986,8 @@ h2 em {
   background: var(--surface2);
 }
 
+.skill-chip i { width: 18px; text-align: center; color: var(--accent, #00d4ff); font-size: 0.95rem; }
+
 .skill-chip img {
   width: 18px; height: 18px;
   object-fit: contain;
