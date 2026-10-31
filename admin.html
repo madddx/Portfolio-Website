@@ -159,6 +159,7 @@
           <div class="form-grid g2">
             <div class="field"><label><i class="fab fa-linkedin" style="color:#0a66c2"></i> LinkedIn URL</label><input id="s-linkedin" /></div>
             <div class="field"><label><i class="fab fa-github"></i> GitHub URL</label><input id="s-github" /></div>
+            <div class="field"><label><i class="fab fa-instagram" style="color:#e4405f"></i> Instagram URL</label><input id="s-instagram" /></div>
             <div class="field"><label><i class="fas fa-envelope" style="color:#ea4335"></i> Email</label><input id="s-email" /></div>
             <div class="field"><label><i class="fas fa-graduation-cap" style="color:#4285f4"></i> Google Scholar URL</label><input id="s-scholar" /></div>
             <div class="field"><label><i class="fas fa-id-card" style="color:#a6ce39"></i> ORCID URL</label><input id="s-orcid" /></div>
@@ -182,6 +183,7 @@
             <div class="field"><label>Phone</label><input id="a-phone" /></div>
             <div class="field"><label>ORCID ID</label><input id="a-orcid" /></div>
             <div class="field"><label>ResearchGate URL</label><input id="a-rg" /></div>
+            <div class="field"><label><i class="fab fa-instagram" style="color:#e4405f"></i> Instagram URL</label><input id="a-ig" /></div>
           </div>
         </div>
       </div>
@@ -272,6 +274,7 @@
             <div class="field"><label>Alt Email</label><input id="c-alt" /></div>
             <div class="field"><label>Phone</label><input id="c-phone" /></div>
             <div class="field"><label>LinkedIn URL</label><input id="c-li" /></div>
+            <div class="field"><label><i class="fab fa-instagram" style="color:#e4405f"></i> Instagram URL</label><input id="c-ig" /></div>
           </div>
         </div>
       </div>
@@ -352,14 +355,14 @@ function populate() {
   sv('h-name', h.name); sv('h-label', h.label); sv('h-desc', h.description);
   sv('h-photo', h.profilePhoto||'assets/img/profile.jpg'); sv('h-cardrole', h.cardRole||'Developer · Researcher');
   sv('h-resume', h.resumeLink); sv('h-badges', (h.badges||[]).join(', '));
-  sv('s-linkedin', s.linkedin); sv('s-github', s.github); sv('s-email', s.email);
+  sv('s-linkedin', s.linkedin); sv('s-github', s.github); sv('s-instagram', s.instagram); sv('s-email', s.email);
   sv('s-scholar', s.scholar); sv('s-orcid', s.orcid); sv('s-ieee', s.ieeeProfile||'');
   previewBadges();
   renderPhrases(h.typedPhrases||[]);
   renderStats(h.stats||[]);
   sv('a-bio1', a.bio1); sv('a-bio2', a.bio2);
   sv('a-bday', ad.birthday); sv('a-loc', ad.location); sv('a-email', ad.email);
-  sv('a-phone', ad.phone); sv('a-orcid', ad.orcid); sv('a-rg', ad.researchgate);
+  sv('a-phone', ad.phone); sv('a-orcid', ad.orcid); sv('a-rg', ad.researchgate); sv('a-ig', ad.instagram);
   renderList('research-list', D.research||[], makeResearch);
   renderList('experience-list', D.experience||[], makeExp);
   renderList('projects-list', D.projects||[], makeProject);
@@ -372,7 +375,7 @@ function populate() {
   renderList('online-list', D.onlineWorks||[], makeOnline);
   renderList('links-list', D.links||[], makeLink);
   sv('c-intro', c.intro); sv('c-loc', c.location); sv('c-email', c.email);
-  sv('c-alt', c.altEmail); sv('c-phone', c.phone); sv('c-li', c.linkedin);
+  sv('c-alt', c.altEmail); sv('c-phone', c.phone); sv('c-li', c.linkedin); sv('c-ig', c.instagram);
   sv('m-initials', m.navInitials||'MH'); sv('m-year', m.copyrightYear||'2025');
   sv('m-ieee', m.ieeeProfileUrl||'');
   updatePreview();
@@ -456,9 +459,9 @@ function collect() {
       label: c.querySelector('[data-s="lbl"]').value
     })),
     badges: gv('h-badges').split(',').map(s=>s.trim()).filter(Boolean),
-    socials: { linkedin:gv('s-linkedin'), github:gv('s-github'), email:gv('s-email'), scholar:gv('s-scholar'), orcid:gv('s-orcid'), ieeeProfile:gv('s-ieee') }
+    socials: { linkedin:gv('s-linkedin'), github:gv('s-github'), instagram:gv('s-instagram'), email:gv('s-email'), scholar:gv('s-scholar'), orcid:gv('s-orcid'), ieeeProfile:gv('s-ieee') }
   };
-  D.about = { bio1:gv('a-bio1'), bio2:gv('a-bio2'), interests: D.about?.interests||[], details:{ birthday:gv('a-bday'), location:gv('a-loc'), email:gv('a-email'), phone:gv('a-phone'), orcid:gv('a-orcid'), researchgate:gv('a-rg') } };
+  D.about = { bio1:gv('a-bio1'), bio2:gv('a-bio2'), interests: D.about?.interests||[], details:{ birthday:gv('a-bday'), location:gv('a-loc'), email:gv('a-email'), phone:gv('a-phone'), orcid:gv('a-orcid'), researchgate:gv('a-rg'), instagram:gv('a-ig') } };
   D.research = cList('research-list', c=>({ year:f(c,'year'), title:f(c,'title'), link:f(c,'link') }));
   D.experience = cList('experience-list', c=>({ org:f(c,'org'), orgLink:f(c,'orgLink'), role:f(c,'role'), period:f(c,'period'), icon:f(c,'icon'), bullets:[...c.querySelectorAll('[data-b]')].map(t=>t.value).filter(Boolean) }));
   D.projects = cList('projects-list', c=>({ img:f(c,'img'), tags:f(c,'tags').split(',').map(s=>s.trim()).filter(Boolean), title:f(c,'title'), desc:f(c,'desc'), link:f(c,'link') }));
@@ -468,7 +471,7 @@ function collect() {
   D.education = { institution:gv('e-name'), institutionLink:gv('e-link'), degree:gv('e-degree'), period:gv('e-period'), logoImg:gv('e-logo')||'assets/img/education/srm.png', courses:gv('e-courses').split(',').map(s=>s.trim()).filter(Boolean) };
   D.onlineWorks = cList('online-list', c=>({ img:f(c,'img'), title:f(c,'title'), type:f(c,'type'), link:f(c,'link') }));
   D.links = cList('links-list', c=>({ icon:f(c,'icon'), title:f(c,'title'), desc:f(c,'desc'), url:f(c,'url') }));
-  D.contact = { intro:gv('c-intro'), location:gv('c-loc'), email:gv('c-email'), altEmail:gv('c-alt'), phone:gv('c-phone'), linkedin:gv('c-li') };
+  D.contact = { intro:gv('c-intro'), location:gv('c-loc'), email:gv('c-email'), altEmail:gv('c-alt'), phone:gv('c-phone'), linkedin:gv('c-li'), instagram:gv('c-ig') };
   D.meta = { navInitials:gv('m-initials')||'MH', copyrightYear:gv('m-year')||'2025', ieeeProfileUrl:gv('m-ieee') };
 }
 function cList(id, extractor) { return [...document.getElementById(id).querySelectorAll('.item')].map(extractor); }
